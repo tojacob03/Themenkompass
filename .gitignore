@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# OpenAlex response cache and raw snapshots (rebuilt on demand)
+.cache/
+
+# Frontend
+node_modules/
+web/dist/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

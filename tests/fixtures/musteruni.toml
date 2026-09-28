@@ -1,0 +1,53 @@
+# Fictional institution used by the test suite. No real people or organisations.
+[institution]
+slug = "musteruni"
+ror = "0zzzzzz00"
+openalex_id = "I1"
+name_de = "Musteruniversität"
+name_en = "Example University"
+aliases = ["Musteruniversität", "Example University"]
+
+[scope]
+window_years = 5
+min_works_per_person = 2
+max_authors_for_network = 4
+recent_years = 3
+
+[budget]
+max_usd_per_run = 0.01
+min_remaining_usd = 0.002
+max_requests_per_run = 50
+
+[[faculties]]
+id = "f1"
+name_de = "Fakultät Eins"
+name_en = "Faculty One"
+patterns = ["Faculty One", "Fakultät Eins"]
+
+[[faculties]]
+id = "f2"
+name_de = "Fakultät Zwei"
+name_en = "Faculty Two"
+patterns = ["Faculty Two"]
+
+[[units]]
+id = "econ"
+faculty = "f1"
+name_de = "Institut für Volkswirtschaft"
+name_en = "Department of Economics"
+patterns = ["Department of Economics", "Volkswirtschaft"]
+
+[[units]]
+id = "data"
+faculty = "f1"
+parent = "econ"
+name_de = "Arbeitsgruppe Datenökonomie"
+name_en = "Data Economics Group"
+patterns = ["Data Economics"]
+
+[[units]]
+id = "bio"
+faculty = "f2"
+name_de = "Institut für Biologie"
+name_en = "Institute of Biology"
+patterns = ["Institute of Biology"]

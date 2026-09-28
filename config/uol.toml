@@ -1,0 +1,293 @@
+# Themenkompass configuration: Carl von Ossietzky Universität Oldenburg
+#
+# Everything institution-specific lives here. To add another university, copy this
+# file, change [institution], and build the [[units]] list from the output of
+#   uv run themenkompass --config config/<slug>.toml affiliations --unmatched
+
+[institution]
+slug = "uol"
+ror = "033n9gh91"             # https://ror.org/033n9gh91
+openalex_id = "I129877168"    # https://openalex.org/I129877168
+name_de = "Carl von Ossietzky Universität Oldenburg"
+name_en = "Carl von Ossietzky University of Oldenburg"
+# A raw affiliation string only counts as evidence for a unit below if it also
+# contains one of these names (case-insensitive substring).
+aliases = [
+  "Carl von Ossietzky",
+  "Carl-von-Ossietzky",
+  "University of Oldenburg",
+  "Universität Oldenburg",
+  "Universitaet Oldenburg",
+  "Oldenburg University",
+  "Univ. Oldenburg",
+  "Uni Oldenburg",
+  "Universitat Oldenburg",
+]
+
+[scope]
+window_years = 10            # rolling window ending in the current year
+min_works_per_person = 2     # people with fewer works in the window are not listed
+max_authors_for_network = 25 # larger author teams are left out of the co-author network
+recent_years = 5             # "recent works" on person pages
+
+[budget]
+# The free OpenAlex allowance is $1/day with a key, $0.10/day without.
+# A full run for this institution costs roughly $0.02.
+max_usd_per_run = 0.25
+min_remaining_usd = 0.02
+max_requests_per_run = 2000
+
+# ---------------------------------------------------------------------------
+# Organisation. OpenAlex knows the university, not its faculties or departments.
+# Units are recognised from the raw affiliation text that authors print on their
+# papers (English and German variants). Patterns are case-insensitive regular
+# expressions. A unit with a `parent` replaces its parent when both match.
+# Faculty patterns catch strings that name only the faculty ("School of ...").
+# Structure as listed on https://uol.de/fakultaeten (checked 2026-09-29).
+# ---------------------------------------------------------------------------
+
+[[faculties]]
+id = "fk1"
+name_de = "Fakultät I – Bildungs- und Sozialwissenschaften"
+name_en = "Faculty I – Education and Social Sciences"
+patterns = ["Education(al)? and Social Sciences", "Bildungs- und Sozialwissenschaften", "Fakult(ä|ae)t I\\b"]
+
+[[faculties]]
+id = "fk2"
+name_de = "Fakultät II – Informatik, Wirtschafts- und Rechtswissenschaften"
+name_en = "Faculty II – Computer Science, Business Administration, Economics and Law"
+patterns = ["Computing Science, Business Administration", "Informatik, Wirtschafts- und Rechtswissenschaften", "Fakult(ä|ae)t II\\b"]
+
+[[faculties]]
+id = "fk3"
+name_de = "Fakultät III – Sprach- und Kulturwissenschaften"
+name_en = "Faculty III – Linguistics and Cultural Studies"
+patterns = ["(Languages?|Linguistics) and Cultural Studies", "Sprach- und Kulturwissenschaften", "Fakult(ä|ae)t III\\b"]
+
+[[faculties]]
+id = "fk4"
+name_de = "Fakultät IV – Human- und Gesellschaftswissenschaften"
+name_en = "Faculty IV – Humanities and Social Sciences"
+patterns = ["Humanities and Social Sciences", "Human- und Gesellschaftswissenschaften", "Fakult(ä|ae)t IV\\b"]
+
+[[faculties]]
+id = "fk5"
+name_de = "Fakultät V – Mathematik und Naturwissenschaften"
+name_en = "Faculty V – Mathematics and Science"
+patterns = ["(School|Faculty) of Mathematics and (Natural )?Sciences?", "Mathematik und Naturwissenschaften", "Fakult(ä|ae)t V\\b"]
+
+[[faculties]]
+id = "fk6"
+name_de = "Fakultät VI – Medizin und Gesundheitswissenschaften"
+name_en = "Faculty VI – Medicine and Health Sciences"
+patterns = ["Medicine and Health Sciences", "Medizin und Gesundheitswissenschaften", "European Medical School", "University Medicine Oldenburg", "Universitätsmedizin Oldenburg", "Fakult(ä|ae)t VI\\b", "Medicine (and|&) Health Sciences", "Gesundheitswissenschaften"]
+
+# --- Fakultät I -------------------------------------------------------------
+[[units]]
+id = "paed"
+faculty = "fk1"
+name_de = "Institut für Pädagogik"
+name_en = "Institute of Education"
+patterns = ["Institut f(ü|ue)r P(ä|ae)dagogik", "Institute (of|for) Education(al Sciences?)?\\b", "Department of Education\\b", "Bildungsmanagement", "Further Education"]
+
+[[units]]
+id = "sonderpaed"
+faculty = "fk1"
+name_de = "Institut für Sonder- und Rehabilitationspädagogik"
+name_en = "Institute of Special Needs and Rehabilitation Education"
+patterns = ["Sonder- und Rehabilitationsp(ä|ae)dagogik", "Special (Needs )?(and Rehabilitation )?Education", "Rehabilitation (Education|Pedagogy)"]
+
+[[units]]
+id = "sowi"
+faculty = "fk1"
+name_de = "Institut für Sozialwissenschaften"
+name_en = "Institute of Social Sciences"
+patterns = ["Institut f(ü|ue)r Sozialwissenschaften", "Institute (of|for) Social Sciences", "Department of (Social Sciences|Sociology|Political Science)"]
+
+# --- Fakultät II ------------------------------------------------------------
+[[units]]
+id = "inf"
+faculty = "fk2"
+name_de = "Department für Informatik"
+name_en = "Department of Computing Science"
+patterns = ["Department (of|f(ü|ue)r|for) (Computing|Computer) Science", "Department f(ü|ue)r Informatik", "Institut f(ü|ue)r Informatik", "Media Informatics", "Computing Science", "Software Engineering", "Applied Artificial Intelligence", "Computational Intelligence", "Microrobotics"]
+
+[[units]]
+id = "wiinf"
+faculty = "fk2"
+parent = "inf"
+name_de = "Wirtschaftsinformatik"
+name_en = "Business Information Systems"
+patterns = ["Wirtschaftsinformatik", "Business (Information Systems|Informatics)", "VLBA", "Very Large Business Applications"]
+
+[[units]]
+id = "offis"
+faculty = "fk2"
+name_de = "OFFIS – Institut für Informatik (An-Institut)"
+name_en = "OFFIS – Institute for Information Technology (affiliated)"
+patterns = ["\\bOFFIS\\b"]
+
+[[units]]
+id = "wire"
+faculty = "fk2"
+name_de = "Department für Wirtschafts- und Rechtswissenschaften"
+name_en = "Department of Business Administration, Economics and Law"
+patterns = ["Business Administration,? Economics,? and Law", "Wirtschafts- und Rechtswissenschaften", "Department of (Economics|Business Administration)\\b", "Institut f(ü|ue)r Volkswirtschaftslehre", "Institut f(ü|ue)r Betriebswirtschaftslehre", "Economic Education", "(Ö|Oe)konomische Bildung", "Department of Law\\b", "Faculty of Law\\b", "Ecological Economics", "Finance and Banking", "Innovation Management", "Berufs- und Wirtschaftsp(ä|ae)dagogik", "Business and Economic Education"]
+
+# --- Fakultät III -----------------------------------------------------------
+[[units]]
+id = "anglistik"
+faculty = "fk3"
+name_de = "Institut für Anglistik und Amerikanistik"
+name_en = "Institute of English and American Studies"
+patterns = ["Anglistik", "English and American Studies", "Institute (of|for) English", "Department of English"]
+
+[[units]]
+id = "germanistik"
+faculty = "fk3"
+name_de = "Institut für Germanistik"
+name_en = "Institute of German Studies"
+patterns = ["Germanistik", "German Studies", "German (Language|Linguistics) and Literature"]
+
+[[units]]
+id = "kunst"
+faculty = "fk3"
+name_de = "Institut für Kunst und visuelle Kultur"
+name_en = "Institute of Art and Visual Culture"
+patterns = ["Kunst und visuelle Kultur", "Art and Visual Culture"]
+
+[[units]]
+id = "materiellekultur"
+faculty = "fk3"
+name_de = "Institut für Materielle Kultur"
+name_en = "Institute of Material Culture"
+patterns = ["Materielle Kultur", "Material Culture"]
+
+[[units]]
+id = "musik"
+faculty = "fk3"
+name_de = "Institut für Musik"
+name_en = "Institute of Music"
+patterns = ["Institut f(ü|ue)r Musik", "Institute (of|for) Music", "Department of Music"]
+
+[[units]]
+id = "niederlandistik"
+faculty = "fk3"
+name_de = "Institut für Niederlandistik"
+name_en = "Institute of Dutch Studies"
+patterns = ["Niederlandistik", "Dutch Studies"]
+
+[[units]]
+id = "slavistik"
+faculty = "fk3"
+name_de = "Institut für Slavistik"
+name_en = "Institute of Slavic Studies"
+patterns = ["Slavistik", "Slavic Studies", "Slavonic Studies"]
+
+# --- Fakultät IV ------------------------------------------------------------
+[[units]]
+id = "theologie"
+faculty = "fk4"
+name_de = "Institut für Evangelische Theologie und Religionspädagogik"
+name_en = "Institute of Protestant Theology and Religious Education"
+patterns = ["Theologie", "Theology", "Religionsp(ä|ae)dagogik", "Religious Education"]
+
+[[units]]
+id = "geschichte"
+faculty = "fk4"
+name_de = "Institut für Geschichte"
+name_en = "Institute of History"
+patterns = ["Institut f(ü|ue)r Geschichte", "Institute (of|for) History", "Department of History", "Historisches Seminar"]
+
+[[units]]
+id = "philosophie"
+faculty = "fk4"
+name_de = "Institut für Philosophie"
+name_en = "Institute of Philosophy"
+patterns = ["Institut f(ü|ue)r Philosophie", "Institute (of|for) Philosophy", "Department of Philosophy", "f(ü|ue)r Philosophie"]
+
+[[units]]
+id = "sport"
+faculty = "fk4"
+name_de = "Institut für Sportwissenschaft"
+name_en = "Institute of Sport Science"
+patterns = ["Sportwissenschaft", "Sports? Sciences?"]
+
+# --- Fakultät V -------------------------------------------------------------
+[[units]]
+id = "icbm"
+faculty = "fk5"
+name_de = "Institut für Chemie und Biologie des Meeres (ICBM)"
+name_en = "Institute for Chemistry and Biology of the Marine Environment (ICBM)"
+patterns = ["\\bICBM\\b", "Chemistry and Biology of (the )?Marine Environment", "Chemie und Biologie des Meeres"]
+
+[[units]]
+id = "hifmb"
+faculty = "fk5"
+name_de = "Helmholtz-Institut für Funktionelle Marine Biodiversität (HIFMB)"
+name_en = "Helmholtz Institute for Functional Marine Biodiversity (HIFMB)"
+patterns = ["\\bHIFMB\\b", "Functional Marine Biodiversity"]
+
+[[units]]
+id = "ibu"
+faculty = "fk5"
+name_de = "Institut für Biologie und Umweltwissenschaften"
+name_en = "Institute of Biology and Environmental Sciences"
+patterns = ["Biology and Environmental Sciences?", "Biologie und Umweltwissenschaften", "\\bIBU\\b"]
+
+[[units]]
+id = "chemie"
+faculty = "fk5"
+name_de = "Institut für Chemie"
+name_en = "Institute of Chemistry"
+patterns = ["Institut f(ü|ue)r (Reine und Angewandte )?Chemie", "Institute (of|for) (Pure and Applied )?Chemistry(?! and Biology)", "Department of Chemistry", "Didaktik der Chemie", "Chemistry Education"]
+
+[[units]]
+id = "mathe"
+faculty = "fk5"
+name_de = "Institut für Mathematik"
+name_en = "Institute of Mathematics"
+patterns = ["Institut f(ü|ue)r Mathematik", "Institute (of|for) Mathematics", "Department of Mathematics"]
+
+[[units]]
+id = "physik"
+faculty = "fk5"
+name_de = "Institut für Physik"
+name_en = "Institute of Physics"
+patterns = ["Institut f(ü|ue)r Physik", "Institute (of|for) Physics", "Department of Physics", "Physics Department", "\\bForWind\\b", "Institut of Physics"]
+
+# --- Fakultät VI ------------------------------------------------------------
+[[units]]
+id = "humanmedizin"
+faculty = "fk6"
+name_de = "Department für Humanmedizin"
+name_en = "Department of Human Medicine"
+patterns = ["Human Medicine", "Humanmedizin", "Universit(ä|ae)tsklinik", "Universit(ä|ae)tsinstitut", "University (Hospital|Clinic|Institute|Department)", "Medi(cal|zinischer) Campus", "Pius[- ]Hospital", "Klinikum Oldenburg", "Evangelisches Krankenhaus", "Department of (Neurosurgery|Neurology|Cardiology|Cardiac Surgery|Pediatrics|Psychiatry|Neonatology|Diagnostic and Interventional Radiology|Medical Informatics|Internal Medicine|Anaesthesiology|Anesthesiology|Urology|Gynecology|Orthopaedics|Orthopedics|Trauma Surgery|General Surgery)", "Medical Microbiology", "Experimental Allerg", "Epidemiology and Biometry", "Assistance Systems and Medical Device Technology"]
+
+[[units]]
+id = "mpa"
+faculty = "fk6"
+name_de = "Department für Medizinische Physik und Akustik"
+name_en = "Department of Medical Physics and Acoustics"
+patterns = ["Medical Physics and Acoustics", "Medizinische Physik und Akustik", "Medizinische Physik\\b"]
+
+[[units]]
+id = "neuro"
+faculty = "fk6"
+name_de = "Department für Neurowissenschaften"
+name_en = "Department of Neuroscience"
+patterns = ["Department (of|f(ü|ue)r|for) Neuroscience", "Department f(ü|ue)r Neurowissenschaften"]
+
+[[units]]
+id = "psych"
+faculty = "fk6"
+name_de = "Department für Psychologie"
+name_en = "Department of Psychology"
+patterns = ["Department (of|f(ü|ue)r|for) Psychology", "Department f(ü|ue)r Psychologie", "Institut f(ü|ue)r Psychologie", "Institute (of|for) Psychology"]
+
+[[units]]
+id = "versorgung"
+faculty = "fk6"
+name_de = "Department für Versorgungsforschung"
+name_en = "Department of Health Services Research"
+patterns = ["Health Services Research", "Versorgungsforschung"]

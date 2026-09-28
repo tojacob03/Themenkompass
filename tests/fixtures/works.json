@@ -1,0 +1,1336 @@
+[
+ {
+  "id": "https://openalex.org/W1",
+  "doi": "https://doi.org/10.0000/w1",
+  "display_name": "Wages on <i>imaginary</i> islands",
+  "publication_year": 2022,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A101",
+     "display_name": "Alma Beispiel",
+     "orcid": "https://orcid.org/0000-0000-0000-0001"
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A102",
+     "display_name": "Bruno Testmann",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T1",
+   "display_name": "Labour Market Dynamics",
+   "score": 0.99,
+   "subfield": {
+    "id": "https://openalex.org/subfields/2002",
+    "display_name": "Economics and Econometrics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/20",
+    "display_name": "Economics, Econometrics and Finance"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T1",
+    "display_name": "Labour Market Dynamics",
+    "score": 0.99,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   },
+   {
+    "id": "https://openalex.org/T4",
+    "display_name": "Survey Methodology",
+    "score": 0.5,
+    "subfield": {
+     "id": "https://openalex.org/subfields/3312",
+     "display_name": "Sociology and Political Science"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/33",
+     "display_name": "Social Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W2",
+  "doi": "https://doi.org/10.0000/w2",
+  "display_name": "Pricing data that does not exist",
+  "publication_year": 2023,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A102",
+     "display_name": "Bruno Testmann",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Data Economics Group, Department of Economics, Example University"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Data Economics Group, Department of Economics, Example University",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A900",
+     "display_name": "Xaver Extern",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I2",
+      "display_name": "Beispiel-Hochschule",
+      "ror": "https://ror.org/0yyyyyy00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Beispiel-Hochschule, Anderswo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Beispiel-Hochschule, Anderswo",
+      "institution_ids": [
+       "https://openalex.org/I2"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T2",
+   "display_name": "Data Markets and Platforms",
+   "score": 0.97,
+   "subfield": {
+    "id": "https://openalex.org/subfields/2002",
+    "display_name": "Economics and Econometrics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/20",
+    "display_name": "Economics, Econometrics and Finance"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T2",
+    "display_name": "Data Markets and Platforms",
+    "score": 0.97,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W3",
+  "doi": "https://doi.org/10.0000/w3",
+  "display_name": "A second look at invented labour markets",
+  "publication_year": 2024,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A101",
+     "display_name": "Alma Beispiel",
+     "orcid": "https://orcid.org/0000-0000-0000-0001"
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A900",
+     "display_name": "Xaver Extern",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I2",
+      "display_name": "Beispiel-Hochschule",
+      "ror": "https://ror.org/0yyyyyy00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Beispiel-Hochschule, Anderswo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Beispiel-Hochschule, Anderswo",
+      "institution_ids": [
+       "https://openalex.org/I2"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A901",
+     "display_name": "Yara Auswärts",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I3",
+      "display_name": "Fantasia Research Institute",
+      "ror": null,
+      "country_code": "NL",
+      "type": "facility"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Fantasia Research Institute, Nirgendwo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Fantasia Research Institute, Nirgendwo",
+      "institution_ids": [
+       "https://openalex.org/I3"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T1",
+   "display_name": "Labour Market Dynamics",
+   "score": 0.95,
+   "subfield": {
+    "id": "https://openalex.org/subfields/2002",
+    "display_name": "Economics and Econometrics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/20",
+    "display_name": "Economics, Econometrics and Finance"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T1",
+    "display_name": "Labour Market Dynamics",
+    "score": 0.95,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W4",
+  "doi": "https://doi.org/10.0000/w4",
+  "display_name": "Platforms for pretend data",
+  "publication_year": 2025,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A102",
+     "display_name": "Bruno Testmann",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Data Economics Group, Department of Economics, Example University"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Data Economics Group, Department of Economics, Example University",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A101",
+     "display_name": "Alma Beispiel",
+     "orcid": "https://orcid.org/0000-0000-0000-0001"
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T2",
+   "display_name": "Data Markets and Platforms",
+   "score": 0.9,
+   "subfield": {
+    "id": "https://openalex.org/subfields/2002",
+    "display_name": "Economics and Econometrics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/20",
+    "display_name": "Economics, Econometrics and Finance"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T2",
+    "display_name": "Data Markets and Platforms",
+    "score": 0.9,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   },
+   {
+    "id": "https://openalex.org/T1",
+    "display_name": "Labour Market Dynamics",
+    "score": 0.4,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W5",
+  "doi": "https://doi.org/10.0000/w5",
+  "display_name": "Plankton in a made-up bay",
+  "publication_year": 2024,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A103",
+     "display_name": "Clara Fiktiv",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Institute of Biology, Example University, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Institute of Biology, Example University, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A104",
+     "display_name": "Dario Platzhalter",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Faculty One, Musteruniversität"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Faculty One, Musteruniversität",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T3",
+   "display_name": "Coastal Plankton Ecology",
+   "score": 0.99,
+   "subfield": {
+    "id": "https://openalex.org/subfields/1105",
+    "display_name": "Ecology, Evolution, Behavior and Systematics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/11",
+    "display_name": "Agricultural and Biological Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/1",
+    "display_name": "Life Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T3",
+    "display_name": "Coastal Plankton Ecology",
+    "score": 0.99,
+    "subfield": {
+     "id": "https://openalex.org/subfields/1105",
+     "display_name": "Ecology, Evolution, Behavior and Systematics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/11",
+     "display_name": "Agricultural and Biological Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/1",
+     "display_name": "Life Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W6",
+  "doi": "https://doi.org/10.0000/w6",
+  "display_name": "More plankton, still fictional",
+  "publication_year": 2026,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A103",
+     "display_name": "Clara Fiktiv",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Institute of Biology, Example University, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Institute of Biology, Example University, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A104",
+     "display_name": "Dario Platzhalter",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Faculty One, Musteruniversität"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Faculty One, Musteruniversität",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A105",
+     "display_name": "Emil Einmal",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Institute of Biology, Example University, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Institute of Biology, Example University, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T3",
+   "display_name": "Coastal Plankton Ecology",
+   "score": 0.98,
+   "subfield": {
+    "id": "https://openalex.org/subfields/1105",
+    "display_name": "Ecology, Evolution, Behavior and Systematics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/11",
+    "display_name": "Agricultural and Biological Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/1",
+    "display_name": "Life Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T3",
+    "display_name": "Coastal Plankton Ecology",
+    "score": 0.98,
+    "subfield": {
+     "id": "https://openalex.org/subfields/1105",
+     "display_name": "Ecology, Evolution, Behavior and Systematics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/11",
+     "display_name": "Agricultural and Biological Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/1",
+     "display_name": "Life Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W7",
+  "doi": "https://doi.org/10.0000/w7",
+  "display_name": "Surveying nobody in particular",
+  "publication_year": 2025,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A106",
+     "display_name": "Frieda Ohnetext",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Example University"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Example University",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A107",
+     "display_name": "Greta Austritt",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T4",
+   "display_name": "Survey Methodology",
+   "score": 0.9,
+   "subfield": {
+    "id": "https://openalex.org/subfields/3312",
+    "display_name": "Sociology and Political Science"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/33",
+    "display_name": "Social Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T4",
+    "display_name": "Survey Methodology",
+    "score": 0.9,
+    "subfield": {
+     "id": "https://openalex.org/subfields/3312",
+     "display_name": "Sociology and Political Science"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/33",
+     "display_name": "Social Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W8",
+  "doi": "https://doi.org/10.0000/w8",
+  "display_name": "Asking the same nobody again",
+  "publication_year": 2026,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A106",
+     "display_name": "Frieda Ohnetext",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Example University"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Example University",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A107",
+     "display_name": "Greta Austritt",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T4",
+   "display_name": "Survey Methodology",
+   "score": 0.92,
+   "subfield": {
+    "id": "https://openalex.org/subfields/3312",
+    "display_name": "Sociology and Political Science"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/33",
+    "display_name": "Social Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T4",
+    "display_name": "Survey Methodology",
+    "score": 0.92,
+    "subfield": {
+     "id": "https://openalex.org/subfields/3312",
+     "display_name": "Sociology and Political Science"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/33",
+     "display_name": "Social Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W9",
+  "doi": "https://doi.org/10.0000/w9",
+  "display_name": "Only an opted-out author wrote this",
+  "publication_year": 2026,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A107",
+     "display_name": "Greta Austritt",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A901",
+     "display_name": "Yara Auswärts",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I3",
+      "display_name": "Fantasia Research Institute",
+      "ror": null,
+      "country_code": "NL",
+      "type": "facility"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Fantasia Research Institute, Nirgendwo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Fantasia Research Institute, Nirgendwo",
+      "institution_ids": [
+       "https://openalex.org/I3"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T4",
+   "display_name": "Survey Methodology",
+   "score": 0.9,
+   "subfield": {
+    "id": "https://openalex.org/subfields/3312",
+    "display_name": "Sociology and Political Science"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/33",
+    "display_name": "Social Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T4",
+    "display_name": "Survey Methodology",
+    "score": 0.9,
+    "subfield": {
+     "id": "https://openalex.org/subfields/3312",
+     "display_name": "Sociology and Political Science"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/33",
+     "display_name": "Social Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W10",
+  "doi": "https://doi.org/10.0000/w10",
+  "display_name": "A very large invented consortium paper",
+  "publication_year": 2023,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A101",
+     "display_name": "Alma Beispiel",
+     "orcid": "https://orcid.org/0000-0000-0000-0001"
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A103",
+     "display_name": "Clara Fiktiv",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Institute of Biology, Example University, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Institute of Biology, Example University, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A900",
+     "display_name": "Xaver Extern",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I2",
+      "display_name": "Beispiel-Hochschule",
+      "ror": "https://ror.org/0yyyyyy00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Beispiel-Hochschule, Anderswo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Beispiel-Hochschule, Anderswo",
+      "institution_ids": [
+       "https://openalex.org/I2"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A901",
+     "display_name": "Yara Auswärts",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I3",
+      "display_name": "Fantasia Research Institute",
+      "ror": null,
+      "country_code": "NL",
+      "type": "facility"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Fantasia Research Institute, Nirgendwo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Fantasia Research Institute, Nirgendwo",
+      "institution_ids": [
+       "https://openalex.org/I3"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A102",
+     "display_name": "Bruno Testmann",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Department of Economics, Musteruniversität, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Department of Economics, Musteruniversität, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T1",
+   "display_name": "Labour Market Dynamics",
+   "score": 0.6,
+   "subfield": {
+    "id": "https://openalex.org/subfields/2002",
+    "display_name": "Economics and Econometrics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/20",
+    "display_name": "Economics, Econometrics and Finance"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T1",
+    "display_name": "Labour Market Dynamics",
+    "score": 0.6,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W11",
+  "doi": "https://doi.org/10.0000/w11",
+  "display_name": "Undated fragment",
+  "publication_year": 2021,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A900",
+     "display_name": "Xaver Extern",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I2",
+      "display_name": "Beispiel-Hochschule",
+      "ror": "https://ror.org/0yyyyyy00",
+      "country_code": "DE",
+      "type": "education"
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Beispiel-Hochschule, Anderswo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Beispiel-Hochschule, Anderswo",
+      "institution_ids": [
+       "https://openalex.org/I2"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T2",
+   "display_name": "Data Markets and Platforms",
+   "score": 0.5,
+   "subfield": {
+    "id": "https://openalex.org/subfields/2002",
+    "display_name": "Economics and Econometrics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/20",
+    "display_name": "Economics, Econometrics and Finance"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/2",
+    "display_name": "Social Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T2",
+    "display_name": "Data Markets and Platforms",
+    "score": 0.5,
+    "subfield": {
+     "id": "https://openalex.org/subfields/2002",
+     "display_name": "Economics and Econometrics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/20",
+     "display_name": "Economics, Econometrics and Finance"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/2",
+     "display_name": "Social Sciences"
+    }
+   }
+  ]
+ }
+]
