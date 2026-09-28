@@ -1,0 +1,4 @@
+# Opt-out list: people with these OpenAlex author ids are removed from the site
+# (their name, profile and any work where they are the only listed author).
+# Removal requests are honoured without discussion; no reason is recorded.
+author_id

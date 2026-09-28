@@ -1,0 +1,7 @@
+# Optional curated assignments for the University of Oldenburg.
+# One row per person, identified by OpenAlex author id (https://openalex.org/A...).
+# unit: a unit id from config/uol.toml (leave empty to keep the automatic assignment)
+# chair: name of the chair / working group as published by the university
+# note: where the information comes from (e.g. "own publication list", "self-reported")
+# See CONTRIBUTING.md. Never add contact details or private information.
+author_id,unit,chair,note

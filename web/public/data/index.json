@@ -1,0 +1,12 @@
+{
+ "default": "uol",
+ "institutions": [
+  {
+   "slug": "uol",
+   "name": {
+    "de": "Carl von Ossietzky Universität Oldenburg",
+    "en": "Carl von Ossietzky University of Oldenburg"
+   }
+  }
+ ]
+}
