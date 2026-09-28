@@ -5,6 +5,7 @@ import { h } from "./dom";
 import { lang, loc, setLang, t } from "./i18n";
 import { currentRoute } from "./router";
 import { homeView } from "./views/home";
+import { searchView } from "./views/search";
 import { topicView } from "./views/topic";
 import { unitView } from "./views/unit";
 
@@ -102,6 +103,8 @@ async function view(ds: Dataset): Promise<{ el: HTMLElement; title: string }> {
       return { el: topicView(ds, id), title: ds.topics.topics[id]?.[0] ?? "Themenkompass" };
     case "einheit":
       return { el: unitView(ds, id), title: ds.unitById.get(id) ? loc(ds.unitById.get(id)!.name) : "Themenkompass" };
+    case "suche":
+      return { el: searchView(ds, route), title: t().searchTitle };
     default:
       return { el: h("p", null, t().notFound), title: "404" };
   }
