@@ -1,0 +1,25 @@
+name: Remove me / Nennung entfernen
+description: Remove a person from Themenkompass. No reason needed. / Eine Person entfernen lassen. Keine Begründung nötig.
+title: "Removal: "
+labels: ["removal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Deutsch:** Du wirst ohne Rückfragen entfernt, spätestens innerhalb von 14 Tagen, dauerhaft auch für künftige Aktualisierungen. Eine Begründung ist nicht nötig. Wenn du das nicht öffentlich beantragen möchtest, nutze den Kontakt unter „Impressum und Datenschutz“ auf der Seite.
+
+        **English:** You will be removed without questions within 14 days at the latest, permanently including future updates. No reason is needed. If you prefer not to ask publicly, use the contact under “Legal notice and privacy” on the site.
+  - type: input
+    id: author_id
+    attributes:
+      label: OpenAlex author id (starts with A, shown on the person page) / OpenAlex-Autor-ID
+      placeholder: A1234567890
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation / Bestätigung
+      options:
+        - label: I am this person or act on their behalf. / Ich bin diese Person oder handle in ihrem Auftrag.
+          required: true

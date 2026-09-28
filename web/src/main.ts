@@ -5,7 +5,9 @@ import { h } from "./dom";
 import { lang, loc, setLang, t } from "./i18n";
 import { currentRoute } from "./router";
 import { homeView } from "./views/home";
+import { legalView } from "./views/legal";
 import { personView } from "./views/person";
+import { qualityView } from "./views/quality";
 import { searchView } from "./views/search";
 import { topicView } from "./views/topic";
 import { unitView } from "./views/unit";
@@ -112,6 +114,10 @@ async function view(ds: Dataset): Promise<{ el: HTMLElement; title: string }> {
       const { networkView } = await import("./views/network");
       return { el: networkView(ds, route), title: t().networkTitle };
     }
+    case "daten":
+      return { el: qualityView(ds), title: t().navQuality };
+    case "rechtliches":
+      return { el: legalView(ds), title: t().footLegal };
     default:
       return { el: h("p", null, t().notFound), title: "404" };
   }

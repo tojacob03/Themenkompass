@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Errors in OpenAlex itself / Fehler in OpenAlex selbst
+    url: https://help.openalex.org/
+    about: Author profiles and institution links can also be corrected at the source.

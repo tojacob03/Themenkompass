@@ -1,0 +1,33 @@
+name: Report an error / Fehler melden
+description: Wrong or missing works, wrong unit, split profiles. / Falsche oder fehlende Werke, falsche Einrichtung, geteilte Profile.
+title: "Correction: "
+labels: ["data"]
+body:
+  - type: input
+    id: author_id
+    attributes:
+      label: OpenAlex author id / OpenAlex-Autor-ID
+      description: Shown on the person page, starts with A. Leave empty if the error is not about a person.
+      placeholder: A1234567890
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong? / Was stimmt nicht?
+      options:
+        - Wrong unit or faculty / Falsche Einrichtung oder Fakultät
+        - Missing works / Fehlende Werke
+        - Works that are not mine / Fremde Werke
+        - Two profiles for one person / Zwei Profile für eine Person
+        - Chair or working group missing / Lehrstuhl oder Arbeitsgruppe fehlt
+        - Something else / Etwas anderes
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: |
+        What should it be? A link to a public publication list or a DOI helps.
+        Please do not post private information such as phone numbers or e-mail addresses.
+    validations:
+      required: true
