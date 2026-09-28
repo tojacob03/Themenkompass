@@ -108,6 +108,10 @@ async function view(ds: Dataset): Promise<{ el: HTMLElement; title: string }> {
       return { el: unitView(ds, id), title: ds.unitById.get(id) ? loc(ds.unitById.get(id)!.name) : "Themenkompass" };
     case "suche":
       return { el: searchView(ds, route), title: t().searchTitle };
+    case "netz": {
+      const { networkView } = await import("./views/network");
+      return { el: networkView(ds, route), title: t().networkTitle };
+    }
     default:
       return { el: h("p", null, t().notFound), title: "404" };
   }
