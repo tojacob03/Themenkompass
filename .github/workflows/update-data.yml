@@ -1,0 +1,51 @@
+name: Update data
+
+# Monthly refresh from OpenAlex, plus manual start (Actions tab > Update data > Run workflow).
+# Cost: a run uses about 200 list requests (~$0.02) of OpenAlex's free $1/day allowance.
+# The pipeline stops on its own before the free allowance could be exceeded, and the
+# OpenAlex account has no payment method, so nothing can be billed.
+on:
+  schedule:
+    - cron: "17 4 3 * *" # 04:17 UTC on the 3rd of every month
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+
+      - name: Fetch and build every configured institution
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+        run: |
+          for config in config/*.toml; do
+            uv run themenkompass --config "$config" run
+          done
+
+      - name: Check data
+        run: |
+          uv run python -m themenkompass.checks
+          uv run pytest -q
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data web/public/data
+          # run.json changes on every run, so the monthly commit also keeps the
+          # schedule alive (GitHub pauses cron jobs in repositories without activity).
+          git commit -m "Update data $(date -u +%Y-%m-%d)" || echo "nothing to commit"
+          git push

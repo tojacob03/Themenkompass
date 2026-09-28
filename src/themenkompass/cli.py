@@ -54,6 +54,12 @@ def cmd_fetch(config: Config, args: argparse.Namespace) -> int:
         "retrieved_at": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
         "years": list(years),
         "works": works,
+        "spend": {
+            "requests": client.spend.requests,
+            "cached": client.spend.cached,
+            "usd": round(client.spend.usd, 4),
+            "keyed": bool(client.api_key),
+        },
     }
     with gzip.open(path, "wt", encoding="utf-8") as fh:
         json.dump(payload, fh)
@@ -78,10 +84,20 @@ def cmd_build(config: Config, args: argparse.Namespace) -> int:
         site_dir=args.site_dir / config.slug,
     )
     update_index(args.site_dir, config)
+    q = quality_stats(tables)
+    run_report = {
+        "retrieved_at": snapshot["retrieved_at"],
+        "years": snapshot["years"],
+        "openalex": snapshot.get("spend"),
+        "works": q["works"],
+        "persons": q["persons"],
+        "share_with_unit": q["shareWithUnit"],
+    }
+    report_path = args.parquet_dir / config.slug / "run.json"
+    report_path.write_text(json.dumps(run_report, indent=1) + "\n", encoding="utf-8")
     for path, size in sorted(sizes.items()):
         log.info("%8.1f kB  %s", size / 1024, path)
     log.info("total %.1f MB", sum(sizes.values()) / 1024 / 1024)
-    q = quality_stats(tables)
     log.info(
         "%d works, %d people listed, %.0f%% of authorships assigned to a unit",
         q["works"],
