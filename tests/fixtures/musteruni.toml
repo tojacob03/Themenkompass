@@ -7,6 +7,9 @@ name_de = "Musteruniversität"
 name_en = "Example University"
 aliases = ["Musteruniversität", "Example University"]
 
+[site]
+repository = "https://github.com/example/musteruni-kompass"
+
 [scope]
 window_years = 5
 min_works_per_person = 2

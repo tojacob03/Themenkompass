@@ -1,0 +1,25 @@
+{
+  "name": "themenkompass-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
+    "@observablehq/plot": "^0.6.17",
+    "cytoscape": "^3.34.3",
+    "minisearch": "^7.2.0"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1",
+    "typescript": "~5.9",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  }
+}

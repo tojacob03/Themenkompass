@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Themenkompass</title>
+    <meta
+      name="description"
+      content="Wer forscht an der Universität zu welchem Thema, wie aktiv und mit wem? Offene Daten aus OpenAlex, ohne Rankings."
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        const t = localStorage.getItem("tk-theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <a class="wordmark" href="#/" aria-label="Themenkompass, Startseite">
+          <svg class="wordmark-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M16 5 L20 16 L16 27 L12 16 Z" fill="currentColor" opacity=".25" />
+            <path d="M16 5 L20 16 L12 16 Z" fill="currentColor" />
+          </svg>
+          <span>Themenkompass</span>
+        </a>
+        <nav class="mainnav" aria-label="Hauptnavigation" id="mainnav"></nav>
+        <div class="toggles" id="toggles"></div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <p class="loading" role="status">Daten werden geladen …</p>
+    </main>
+    <footer class="sitefoot" id="sitefoot"></footer>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

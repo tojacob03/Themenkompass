@@ -86,14 +86,19 @@ class Config:
     openalex_id: str
     name_de: str
     name_en: str
-    # A raw affiliation string only counts as evidence for a unit if it also names the
-    # institution itself; this keeps "Department of Economics, University of X" out.
+    # Names of the institution. Only used for older OpenAlex records that do not link
+    # raw affiliation strings to institutions: such a string then counts as evidence for
+    # a unit only if it also names the institution itself.
     aliases: tuple[str, ...]
     scope: Scope = field(default_factory=Scope)
     budget: Budget = field(default_factory=Budget)
     faculties: tuple[Faculty, ...] = ()
     units: tuple[Unit, ...] = ()
     source_path: Path | None = None
+    # Where people report errors or ask to be removed (the site links to its issues).
+    repository: str | None = None
+    # Optional legal notice (Impressum): operator name, postal address, e-mail.
+    legal: dict[str, str] = field(default_factory=dict)
 
     def unit(self, unit_id: str) -> Unit:
         for unit in self.units:
@@ -217,7 +222,33 @@ def parse_config(raw: dict[str, object], source_path: Path | None = None) -> Con
         faculties=faculties,
         units=tuple(units),
         source_path=source_path,
+        repository=_repository(raw),
+        legal=_legal(raw),
     )
+
+
+def _repository(raw: dict[str, object]) -> str | None:
+    site = raw.get("site", {})
+    if not isinstance(site, dict):
+        raise ConfigError("[site] must be a table")
+    repo = site.get("repository")
+    if repo is None:
+        return None
+    if not isinstance(repo, str) or not repo.startswith("https://github.com/"):
+        raise ConfigError("[site]: 'repository' must be a https://github.com/ URL")
+    return repo.rstrip("/")
+
+
+def _legal(raw: dict[str, object]) -> dict[str, str]:
+    site = raw.get("site", {})
+    legal = site.get("legal", {}) if isinstance(site, dict) else {}
+    if not isinstance(legal, dict):
+        raise ConfigError("[site.legal] must be a table")
+    allowed = {"operator", "address", "email"}
+    unknown = set(legal) - allowed
+    if unknown:
+        raise ConfigError(f"[site.legal]: unknown keys {sorted(unknown)}")
+    return {k: str(v) for k, v in legal.items() if str(v).strip()}
 
 
 def _strings(table: dict[str, object], key: str) -> list[str]:

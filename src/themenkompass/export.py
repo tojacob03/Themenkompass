@@ -240,6 +240,8 @@ def site_payload(tables: Tables, config: Config, run: RunInfo, current_year: int
             "openalex": config.openalex_id,
             "name": {"de": config.name_de, "en": config.name_en},
         },
+        "repository": config.repository,
+        "legal": config.legal,
         "years": list(years),
         "currentYear": current_year,
         "retrievedAt": run.retrieved_at,

@@ -10,8 +10,8 @@ ror = "033n9gh91"             # https://ror.org/033n9gh91
 openalex_id = "I129877168"    # https://openalex.org/I129877168
 name_de = "Carl von Ossietzky Universität Oldenburg"
 name_en = "Carl von Ossietzky University of Oldenburg"
-# A raw affiliation string only counts as evidence for a unit below if it also
-# contains one of these names (case-insensitive substring).
+# Names of the university. Only needed for older OpenAlex records that do not say
+# which institution a raw affiliation string belongs to.
 aliases = [
   "Carl von Ossietzky",
   "Carl-von-Ossietzky",
@@ -23,6 +23,13 @@ aliases = [
   "Uni Oldenburg",
   "Universitat Oldenburg",
 ]
+
+[site]
+# Error reports and removal requests go to this repository's issue tracker.
+repository = "https://github.com/tojacob03/forschungsatlas"
+
+# Legal notice shown on the site (Impressum). Leave empty to show only the privacy notice.
+[site.legal]
 
 [scope]
 window_years = 10            # rolling window ending in the current year
