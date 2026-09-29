@@ -1090,3 +1090,35 @@ h1[tabindex="-1"]:focus {
 .field.inline {
   max-width: 22rem;
 }
+
+/* Phones: wordmark and toggles share the first row, the navigation scrolls
+   sideways in one row instead of wrapping into three. */
+@media (max-width: 720px) {
+  .masthead-inner {
+    gap: 0 0.5rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.2rem;
+  }
+  .toggles {
+    order: 2;
+    margin-left: auto;
+  }
+  .mainnav {
+    order: 3;
+    flex-basis: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .mainnav ul {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+  /* bigger tap areas for text links in lists, without changing the layout */
+  .people a,
+  .work-people a,
+  .chips a,
+  .plain a,
+  .crumbs a {
+    padding-block: 0.35rem;
+  }
+}
