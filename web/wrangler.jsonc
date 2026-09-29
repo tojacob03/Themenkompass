@@ -1,0 +1,13 @@
+// Cloudflare Workers configuration: serve the built static site, no server code.
+// Static asset requests are free and unlimited on the Workers free plan.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "themenkompass",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist"
+  },
+  // no Worker script, so nothing can run or be billed per request
+  "workers_dev": true,
+  "preview_urls": true
+}

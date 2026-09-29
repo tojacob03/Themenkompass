@@ -29,7 +29,11 @@ aliases = [
 repository = "https://github.com/tojacob03/forschungsatlas"
 
 # Legal notice shown on the site (Impressum). Leave empty to show only the privacy notice.
+# Use "\n" for line breaks in the address.
 [site.legal]
+operator = "Till Oscar Jacob"
+address = "Kreienweg 15\n26197 Großenkneten\nDeutschland"
+email = "to_jacob@me.com"
 
 [scope]
 window_years = 10            # rolling window ending in the current year

@@ -13,7 +13,7 @@ People are never ranked. There are no citation counts, no scores and no contact 
 
 ![Start page: the search field completes the question “Who at the university works on …?”, followed by the topic map](docs/screenshot.png)
 
-**Live:** https://themenkompass.pages.dev *(link active after the first deployment)*
+**Live:** https://themenkompass.to-jacob.workers.dev
 
 ## Key findings (Oldenburg, 2017–2026, data as of 29 September 2026)
 
@@ -49,7 +49,7 @@ keyboard and screen-reader friendly, usable on a phone.
 ```
             monthly GitHub Action (cron + manual)                      static hosting
 ┌────────────────────────────────────────────────────────┐   ┌────────────────────────────┐
-│ config/<slug>.toml ──► fetch ──► model ──► export      │   │ Cloudflare Pages           │
+│ config/<slug>.toml ──► fetch ──► model ──► export      │   │ Cloudflare Workers (static)│
 │ mappings/<slug>.csv      │         │         │         │   │  web/ (Vite + TypeScript)  │
 │                    OpenAlex API    │   data/<slug>/*.parquet  │  MiniSearch, Plot,       │
 │                (cursor paging,     │   web/public/data/*.json ─►  Cytoscape              │
@@ -150,7 +150,7 @@ GDPR. The approach:
 
 ## Cost
 
-Everything runs on free tiers: GitHub Actions (public repository), Cloudflare Pages and
+Everything runs on free tiers: GitHub Actions (public repository), Cloudflare Workers static assets (free and unlimited) and
 OpenAlex's free daily allowance. A monthly update uses about 200 OpenAlex list requests
 ($0.02 of the free $1/day). The pipeline refuses priced features (full-text search,
 content downloads) and stops before the free allowance is used up.
