@@ -50,6 +50,10 @@ const de = {
   heroFacts: (works: string, persons: string, from: number, to: number) =>
     `${works} Werke von ${persons} Personen aus den Jahren ${from} bis ${to}, zusammengestellt aus OpenAlex. Personen werden nicht nach Zitationen oder Output sortiert.`,
   heroLimits: "Was die Daten können und was nicht",
+  treemapLabel: "Themenlandschaft: Fächer nach Anzahl der Werke",
+  treemapHint: "Jede Fläche ist ein Fach, ihre Größe die Zahl der Werke. Klick öffnet das Fach in der Liste darunter.",
+  fingerprintCaption: "Themen nach Jahr: Punktgröße = Zahl der Werke",
+  fingerprintNote: "Punktgröße = Werke pro Jahr und Thema, bis zu drei Themen je Werk. Hell: laufendes Jahr.",
   browseTitle: "Nach Fakultät stöbern",
   browseIntro: "Wähle deine Fakultät, dann das Institut oder Department. Dort findest du alle aufgeführten Personen und ihre Themen.",
   facultyFacts: (people: string, works: string) => `${people} Personen, ${works} Werke`,
@@ -200,6 +204,10 @@ const en: Dict = {
   heroFacts: (works, persons, from, to) =>
     `${works} works by ${persons} people from ${from} to ${to}, compiled from OpenAlex. People are never sorted by citations or output.`,
   heroLimits: "What the data can and cannot tell you",
+  treemapLabel: "Topic landscape: fields by number of works",
+  treemapHint: "Each area is a field, its size the number of works. Click to open the field in the list below.",
+  fingerprintCaption: "Topics by year: dot size = number of works",
+  fingerprintNote: "Dot size = works per year and topic, up to three topics per work. Light: current year.",
   browseTitle: "Browse by faculty",
   browseIntro: "Pick your faculty, then the institute or department. There you find everyone listed and their topics.",
   facultyFacts: (people, works) => `${people} people, ${works} works`,

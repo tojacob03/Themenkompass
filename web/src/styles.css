@@ -37,10 +37,10 @@
     --line-strong: #4a5670;
     --accent: #ff8a4c;
     --focus: #8ab4ff;
-    --d1: #3dd6a8;
-    --d2: #f0b429;
-    --d3: #56b4e9;
-    --d4: #e59acb;
+    --d1: #0f9a73;
+    --d2: #c0850f;
+    --d3: #3a8fd4;
+    --d4: #c86aab;
     --d0: #a3acbd;
     color-scheme: dark;
   }
@@ -55,10 +55,10 @@
   --line-strong: #4a5670;
   --accent: #ff8a4c;
   --focus: #8ab4ff;
-  --d1: #3dd6a8;
-  --d2: #f0b429;
-  --d3: #56b4e9;
-  --d4: #e59acb;
+  --d1: #0f9a73;
+  --d2: #c0850f;
+  --d3: #3a8fd4;
+  --d4: #c86aab;
   --d0: #a3acbd;
   color-scheme: dark;
 }
@@ -1257,4 +1257,200 @@ section[aria-labelledby] {
 /* keyboard focus inside the start page suggestions */
 .suggest-inner a:focus-visible {
   outline-offset: 3px;
+}
+
+
+/* ------------------------------------------------------------------ visualisations */
+
+.legend-domains {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.25rem;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.legend-domains li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legend-domains .swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.landscape {
+  margin: 0.5rem 0 2.5rem;
+}
+
+.treemap {
+  position: relative;
+  width: 100%;
+}
+
+.tile {
+  --c: var(--d0);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.45rem 0.55rem;
+  border: 0;
+  border-top: 3px solid var(--c);
+  border-radius: 2px;
+  background: color-mix(in oklab, var(--c) 22%, var(--paper));
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.tile:hover,
+.tile:focus-visible {
+  background: color-mix(in oklab, var(--c) 38%, var(--paper));
+}
+
+.tile:focus-visible {
+  outline-offset: -3px;
+}
+
+.tile-name {
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.tile-count {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.faculty-viz {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.35rem 0 0.75rem;
+  --c: var(--muted);
+}
+
+.mix {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  height: 0.6rem;
+}
+
+.mix-part {
+  --c: var(--d0);
+  background: var(--c);
+  border-radius: 2px;
+  min-width: 3px;
+}
+
+.fp-wrap {
+  overflow-x: auto;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.fingerprint {
+  border-collapse: collapse;
+  width: auto;
+  max-width: none;
+  font-size: var(--step--1);
+}
+
+.fingerprint th,
+.fingerprint td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.35rem 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fingerprint thead th {
+  color: var(--muted);
+  font-weight: 400;
+  width: 2rem;
+}
+
+.fingerprint abbr {
+  text-decoration: none;
+}
+
+.fingerprint th[scope="row"],
+.fingerprint .fp-topic-head {
+  text-align: left;
+  font-weight: 400;
+  padding-right: 1.25rem;
+  width: auto;
+  min-width: 14rem;
+  max-width: 22rem;
+}
+
+.fingerprint tr {
+  --c: var(--d0);
+}
+
+.fingerprint tr.d1 { --c: var(--d1); }
+.fingerprint tr.d2 { --c: var(--d2); }
+.fingerprint tr.d3 { --c: var(--d3); }
+.fingerprint tr.d4 { --c: var(--d4); }
+
+.fp-dot {
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--c);
+  vertical-align: middle;
+}
+
+.fingerprint td.running .fp-dot {
+  opacity: 0.4;
+}
+
+.fingerprint .fp-total {
+  color: var(--muted);
+  padding-left: 0.75rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .fingerprint th[scope="row"],
+  .fingerprint .fp-topic-head {
+    min-width: 9rem;
+  }
+  .fingerprint thead th {
+    width: 1.6rem;
+  }
+}
+
+.tile.d1, .mix-part.d1 { --c: var(--d1); }
+.tile.d2, .mix-part.d2 { --c: var(--d2); }
+.tile.d3, .mix-part.d3 { --c: var(--d3); }
+.tile.d4, .mix-part.d4 { --c: var(--d4); }
+
+/* tiles too small for a label: no padding, so they never outgrow their box */
+.tile-bare {
+  padding: 0;
+  border-top-width: 2px;
+}
+
+.work-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.9rem;
+}
+
+.tile-wrap .tile-name {
+  white-space: normal;
+  overflow-wrap: normal;
 }

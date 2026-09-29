@@ -5,6 +5,7 @@ import { lang, loc, t } from "../i18n";
 import { replaceParams, type Route } from "../router";
 import { getSearch } from "../search";
 import { domainClass, filterBar, fmt, sparkline, trendBadge } from "../ui";
+import { domainLegend, domainMix, topicTreemap } from "../viz";
 
 export function filterFromRoute(ds: Dataset, route: Route): Filter {
   const [first, last] = ds.meta.years;
@@ -125,12 +126,22 @@ function browse(ds: Dataset): HTMLElement {
     { class: "page browse", "aria-labelledby": "browse-title" },
     h("h2", { id: "browse-title" }, t().browseTitle),
     h("p", { class: "lede" }, t().browseIntro),
+    domainLegend(ds),
     h(
       "ul",
       { class: "faculties" },
       ds.meta.faculties.map((f) => {
         const people = ds.persons.filter((p) => p.f.includes(f.id)).length;
-        const works = ds.works.filter((w) => w.f.includes(f.id)).length;
+        const facultyWorks = ds.works.filter((w) => w.f.includes(f.id));
+        const works = facultyWorks.length;
+        const [first, last] = ds.meta.years;
+        const perYear = new Array<number>(last - first + 1).fill(0);
+        const byDomain = new Map<string, number>();
+        for (const w of facultyWorks) {
+          perYear[w.y - first] = (perYear[w.y - first] ?? 0) + 1;
+          const domain = w.tp[0] ? ds.topicPath(w.tp[0])?.domain : undefined;
+          if (domain) byDomain.set(domain, (byDomain.get(domain) ?? 0) + 1);
+        }
         const units = ds.meta.units
           .filter((u) => u.faculty === f.id && !u.parent)
           .sort((a, b) => loc(a.name).localeCompare(loc(b.name), lang));
@@ -139,6 +150,7 @@ function browse(ds: Dataset): HTMLElement {
           { class: "faculty" },
           h("a", { href: `#/einheit/${f.id}`, class: "faculty-name" }, loc(f.name)),
           h("span", { class: "faculty-facts" }, t().facultyFacts(fmt(people), fmt(works))),
+          h("div", { class: "faculty-viz" }, domainMix(ds, byDomain), sparkline(perYear, ds.meta.years, ds.meta.currentYear)),
           h(
             "ul",
             null,
@@ -214,6 +226,13 @@ function topicMap(ds: Dataset, filter: Filter): HTMLElement {
   const years: [number, number] = [filter.from, filter.to];
   const tree = topicTree(works, ds.topics, years);
   if (!tree.total) return h("p", { class: "empty" }, t().mapEmpty);
+  const openField = (fieldId: string) => {
+    const details = document.getElementById(`field-${fieldId}`) as HTMLDetailsElement | null;
+    if (!details) return;
+    details.open = true;
+    details.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    details.querySelector("summary")?.focus({ preventScroll: true });
+  };
   const maxField = Math.max(...tree.domains.flatMap((d) => d.children.map((f) => f.total)));
 
   const row = (node: Node, level: "field" | "subfield" | "topic", max: number, domain: string) => {
@@ -240,6 +259,7 @@ function topicMap(ds: Dataset, filter: Filter): HTMLElement {
   return h(
     "div",
     { class: "domains" },
+    h("div", { class: "landscape" }, domainLegend(ds), topicTreemap(tree, openField), h("p", { class: "note" }, t().treemapHint)),
     tree.domains.map((d) =>
       h(
         "section",
@@ -254,7 +274,7 @@ function topicMap(ds: Dataset, filter: Filter): HTMLElement {
         d.children.map((field) =>
           h(
             "details",
-            { class: "field-group" },
+            { class: "field-group", id: `field-${field.id}` },
             h("summary", null, row(field, "field", maxField, d.id)),
             field.children.map((sub) =>
               h(

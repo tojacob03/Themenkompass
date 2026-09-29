@@ -4,6 +4,7 @@ import { h } from "../dom";
 import { t } from "../i18n";
 import { href } from "../router";
 import { fmt, issueUrl, notFound, personLink, personUnits, topicLink, workList } from "../ui";
+import { topicFingerprint } from "../viz";
 import { perYearChart } from "./topic";
 
 export function personView(ds: Dataset, id: string): HTMLElement {
@@ -61,8 +62,8 @@ export function personView(ds: Dataset, id: string): HTMLElement {
       "section",
       { "aria-labelledby": "topics" },
       h("h2", { id: "topics" }, t().personTopics),
-      h("ul", { class: "chips" }, p.tp.map(([tid, n]) => h("li", null, topicLink(ds, tid, fmt(n))))),
-      h("p", { class: "note" }, t().personTopicsNote),
+      topicFingerprint(ds, p) ?? h("ul", { class: "chips" }, p.tp.map(([tid, n]) => h("li", null, topicLink(ds, tid, fmt(n))))),
+      h("p", { class: "note" }, t().fingerprintNote),
     ),
     h(
       "section",
