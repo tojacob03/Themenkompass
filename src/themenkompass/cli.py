@@ -277,9 +277,30 @@ def cmd_affiliations(config: Config, args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_find_institution(args: argparse.Namespace) -> int:
+    import httpx
+
+    from themenkompass.config import Budget
+    from themenkompass.setup import config_skeleton, openalex_institution, search_ror
+
+    with httpx.Client(timeout=30) as http:
+        hits = search_ror(http, args.name)
+    if not hits:
+        log.error("no ROR match for %r", args.name)
+        return 1
+    for i, hit in enumerate(hits):
+        print(f"[{i}] {hit['ror']}  {hit['name']} ({hit['city']}) {hit['status']}")
+    choice = hits[args.pick]
+    with OpenAlexClient(Budget()) as client:
+        info = openalex_institution(client, choice["ror"])
+    print(f"\nOpenAlex {info['openalex_id']}: {info['name']}, {info['works']} works")
+    print(config_skeleton(args.slug or "new", choice["ror"], info))
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="themenkompass", description=__doc__)
-    parser.add_argument("--config", type=Path, required=True, help="institution TOML file")
+    parser.add_argument("--config", type=Path, help="institution TOML file")
     parser.add_argument("-v", "--verbose", action="store_true")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -306,12 +327,23 @@ def main(argv: list[str] | None = None) -> int:
     p_aff.add_argument("--limit", type=int, default=80)
     p_aff.add_argument("--unmatched", action="store_true", help="only strings no unit matches")
 
+    p_find = sub.add_parser(
+        "find-institution", help="look up ROR and OpenAlex ids for a new config"
+    )
+    p_find.add_argument("name")
+    p_find.add_argument("--pick", type=int, default=0, help="which ROR match to use")
+    p_find.add_argument("--slug")
+
     args = parser.parse_args(argv)
     logging.basicConfig(
         level=logging.DEBUG if args.verbose else logging.INFO,
         format="%(levelname)s %(name)s: %(message)s",
     )
     logging.getLogger("httpx").setLevel(logging.WARNING)
+    if args.command == "find-institution":
+        return cmd_find_institution(args)
+    if args.config is None:
+        parser.error("--config is required for this command")
     config = load_config(args.config)
     commands = {
         "fetch": cmd_fetch,

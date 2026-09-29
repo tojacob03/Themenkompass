@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use Themenkompass, please cite it as below."
+title: "Themenkompass: who researches what at a university, how actively and with whom"
+type: software
+authors:
+  - family-names: Jacob
+    given-names: Till Oscar
+repository-code: "https://github.com/tojacob03/forschungsatlas"
+url: "https://themenkompass.pages.dev"
+license: MIT
+version: 0.1.0
+date-released: 2026-09-29
+keywords:
+  - OpenAlex
+  - research information
+  - bibliometrics
+  - co-authorship network
+  - open data
+references:
+  - type: database
+    title: OpenAlex
+    authors:
+      - name: OurResearch
+    url: "https://openalex.org"
+    license: CC0-1.0
