@@ -79,8 +79,9 @@ describe("buildNetwork", () => {
     const g = buildNetwork(works, ds.personById, topics, { ...base, faculty: "f1", minWeight: 2 });
     expect(g.edges.map((e) => `${e.source}-${e.target}`)).toEqual(["A1-A2"]);
     const ext = buildNetwork(works, ds.personById, topics, { ...base, unit: "econ", external: true });
-    expect(ext.edges.filter((e) => e.kind === "external").map((e) => e.target).sort()).toEqual(["I8", "I9"]);
-    expect(ext.nodes.find((n) => n.id === "I9")).toEqual({ id: "I9", kind: "institution", weight: 2 });
+    // "econ" includes its sub-unit "data" (A2), so A2's partner I9 counts too
+    expect([...new Set(ext.edges.filter((e) => e.kind === "external").map((e) => e.target))].sort()).toEqual(["I8", "I9"]);
+    expect(ext.nodes.find((n) => n.id === "I9")).toEqual({ id: "I9", kind: "institution", weight: 3 });
   });
 
   it("filters by topic level", () => {
@@ -88,5 +89,14 @@ describe("buildNetwork", () => {
     expect(workInTopic(w, topics, "field", "20")).toBe(true);
     expect(workInTopic(w, topics, "subfield", "1105")).toBe(false);
     expect(workInTopic(w, topics, "topic", "T1")).toBe(true);
+  });
+});
+
+describe("sub-units", () => {
+  it("count towards their parent unit", () => {
+    const ds = dataset();
+    // A2 and W1/W2 are in "data", a sub-unit of "econ"
+    expect(ds.personById.get("A2")!.ua).toEqual(["data", "econ"]);
+    expect(filterWorks(ds.works, { from: 2022, to: 2026, unit: "econ" }).map((w) => w.i)).toContain("W1");
   });
 });

@@ -49,6 +49,7 @@ export interface Work {
   v?: string; // venue
   x?: string[]; // external institutions
   tr?: 1; // author list truncated by OpenAlex
+  ua?: string[]; // units incl. parent units, computed on load for filtering
 }
 
 export interface Person {
@@ -65,6 +66,7 @@ export interface Person {
   xi: [string, number][];
   o?: string;
   c?: string;
+  ua?: string[]; // units incl. parent units, computed on load for filtering
 }
 
 export interface Topics {
@@ -99,6 +101,20 @@ export class Dataset {
     for (const p of persons) this.personById.set(p.i, p);
     for (const u of meta.units) this.unitById.set(u.id, u);
     for (const f of meta.faculties) this.facultyById.set(f.id, f);
+    // A person or work in a sub-unit also belongs to its parent unit.
+    const withParents = (units: string[]) => {
+      const out = new Set(units);
+      for (const id of units) {
+        let parent = this.unitById.get(id)?.parent;
+        while (parent && !out.has(parent)) {
+          out.add(parent);
+          parent = this.unitById.get(parent)?.parent;
+        }
+      }
+      return [...out];
+    };
+    for (const p of persons) p.ua = withParents(p.u);
+    for (const w of works) w.ua = withParents(w.u);
     for (const w of works) {
       for (const a of w.a) push(this.worksByPerson, a, w);
       for (const t of w.tp) push(this.worksByTopic, t, w);

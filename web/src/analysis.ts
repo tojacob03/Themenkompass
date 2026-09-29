@@ -15,12 +15,12 @@ export function filterWorks(works: Work[], filter: Filter): Work[] {
       w.y >= filter.from &&
       w.y <= filter.to &&
       (!filter.faculty || w.f.includes(filter.faculty)) &&
-      (!filter.unit || w.u.includes(filter.unit)),
+      (!filter.unit || (w.ua ?? w.u).includes(filter.unit)),
   );
 }
 
 export function personMatches(p: Person, filter: Pick<Filter, "faculty" | "unit">): boolean {
-  return (!filter.faculty || p.f.includes(filter.faculty)) && (!filter.unit || p.u.includes(filter.unit));
+  return (!filter.faculty || p.f.includes(filter.faculty)) && (!filter.unit || (p.ua ?? p.u).includes(filter.unit));
 }
 
 /** Same rule as export.trend() in the Python pipeline. */

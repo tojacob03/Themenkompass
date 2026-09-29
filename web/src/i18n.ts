@@ -112,6 +112,7 @@ const de = {
   unitKicker: "Einrichtung",
   facultyKicker: "Fakultät",
   unitPeople: "Personen",
+  peopleCount: (n: string, raw: number) => `${n} ${plural(raw, "Person", "Personen")}`,
   unitPeopleNote: (min: number) =>
     `Alphabetisch. Aufgeführt ist, wer mindestens ${min} Werke im Zeitraum hat oder in der Zuordnungsdatei steht.`,
   unitTopics: "Häufigste Themen",
@@ -248,6 +249,7 @@ const en: Dict = {
   unitKicker: "Unit",
   facultyKicker: "Faculty",
   unitPeople: "People",
+  peopleCount: (n, raw) => `${n} ${plural(raw, "person", "people")}`,
   unitPeopleNote: (min) =>
     `Alphabetical. Listed are people with at least ${min} works in the period or an entry in the mapping file.`,
   unitTopics: "Most frequent topics",
