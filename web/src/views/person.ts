@@ -36,7 +36,19 @@ export function personView(ds: Dataset, id: string): HTMLElement {
     h("h1", null, p.n),
     h("p", { class: "lede" }, personUnits(ds, p)),
     p.c ? h("p", null, `${t().chair}: ${p.c}`) : null,
+    works.length
+      ? h("p", { class: "facts" }, t().personFacts(works.length, works[works.length - 1]!.y, recent.length, ds.meta.recentYears))
+      : null,
     h("p", { class: "note" }, sourceText(ds, p, works.length)),
+    h(
+      "nav",
+      { class: "jump", "aria-label": t().onThisPage },
+      h("span", null, `${t().onThisPage}:`),
+      h("a", { href: "#topics", onclick: jump("topics") }, t().personTopics),
+      h("a", { href: "#recent", onclick: jump("recent") }, t().recentWorks(ds.meta.recentYears)),
+      p.ca.length ? h("a", { href: "#co", onclick: jump("co") }, t().coauthors) : null,
+      p.xi.length ? h("a", { href: "#partners", onclick: jump("partners") }, t().partners) : null,
+    ),
     h(
       "section",
       { "aria-labelledby": "act" },
@@ -65,7 +77,7 @@ export function personView(ds: Dataset, id: string): HTMLElement {
       p.ca.length
         ? h(
             "ul",
-            { class: "plain" },
+            { class: "people" },
             p.ca
               .map(([cid, n]) => [ds.personById.get(cid), n] as const)
               .filter((x): x is readonly [Person, number] => !!x[0])
@@ -93,6 +105,17 @@ export function personView(ds: Dataset, id: string): HTMLElement {
     ),
     correctionBox(ds, p),
   );
+}
+
+/** In-page links must not change the hash, which is the router's. */
+function jump(id: string): (e: Event) => void {
+  return (e) => {
+    e.preventDefault();
+    const target = document.getElementById(id);
+    target?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    target?.setAttribute("tabindex", "-1");
+    target?.focus({ preventScroll: true });
+  };
 }
 
 function sourceText(ds: Dataset, p: Person, total: number): string {

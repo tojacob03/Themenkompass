@@ -4,7 +4,7 @@ import type { Dataset } from "../data";
 import { h } from "../dom";
 import { lang, t } from "../i18n";
 import { href } from "../router";
-import { domainClass, fmt, notFound, personUnits, trendBadge, workList } from "../ui";
+import { domainClass, fmt, notFound, personUnits, topicLink, trendBadge, unitLink, unitName, workList } from "../ui";
 
 export function perYearChart(counts: number[], years: [number, number], currentYear: number, label: string): HTMLElement {
   const data = counts.map((n, i) => ({
@@ -65,6 +65,19 @@ export function topicView(ds: Dataset, topicId: string): HTMLElement {
     for (const li of list.children) (li as HTMLElement).hidden = !(li as HTMLElement).dataset.name?.includes(q);
   });
 
+  // Where at the university: units (or faculties) of the people publishing on the topic.
+  const unitPeople = new Map<string, number>();
+  for (const { person } of people) {
+    for (const id of person.u.length ? person.u : person.f) unitPeople.set(id, (unitPeople.get(id) ?? 0) + 1);
+  }
+  const where = [...unitPeople].sort((a, b) => b[1] - a[1] || unitName(ds, a[0]).localeCompare(unitName(ds, b[0]))).slice(0, 8);
+  const maxWhere = Math.max(1, ...where.map(([, n]) => n));
+  const related = Object.entries(ds.topics.topics)
+    .filter(([id, [, sub]]) => sub === path.subfield && id !== topicId && ds.worksByTopic.has(id))
+    .map(([id]) => [id, ds.worksByTopic.get(id)!.length] as const)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8);
+
   return h(
     "article",
     { class: `page topic ${domainClass(path.domain)}` },
@@ -86,6 +99,27 @@ export function topicView(ds: Dataset, topicId: string): HTMLElement {
     ),
     h("p", { class: "note" }, t().topicNameNote),
     perYearChart(counts, [first, last], ds.meta.currentYear, t().perYear),
+    where.length
+      ? h(
+          "section",
+          { "aria-labelledby": "where" },
+          h("h2", { id: "where" }, t().whereTitle),
+          h("p", { class: "note" }, t().whereNote),
+          h(
+            "ul",
+            { class: "where" },
+            where.map(([id, n]) =>
+              h(
+                "li",
+                null,
+                unitLink(ds, id),
+                h("span", { class: "muted" }, t().peopleShort(n)),
+                h("span", { class: "row-bar", "aria-hidden": "true" }, h("span", { class: "bar", style: `width:${(100 * n) / maxWhere}%` })),
+              ),
+            ),
+          ),
+        )
+      : null,
     h(
       "section",
       { "aria-labelledby": "who" },
@@ -94,6 +128,15 @@ export function topicView(ds: Dataset, topicId: string): HTMLElement {
       people.length > 12 ? h("div", { class: "field inline" }, h("label", { for: "people-filter" }, t().filterPeople), filterInput) : null,
       list,
     ),
+    related.length
+      ? h(
+          "section",
+          { "aria-labelledby": "related" },
+          h("h2", { id: "related" }, t().relatedTitle),
+          h("p", { class: "note" }, t().relatedNote(ds.topics.subfields[path.subfield]?.[0] ?? "")),
+          h("ul", { class: "chips" }, related.map(([id, n]) => h("li", null, topicLink(ds, id, fmt(n))))),
+        )
+      : null,
     h(
       "section",
       { "aria-labelledby": "recent" },

@@ -30,7 +30,15 @@ export function searchView(ds: Dataset, route: Route): HTMLElement {
             h(
               "ul",
               { class: "people" },
-              r.people.map((p) => h("li", null, h("a", { href: `#/person/${p.i}`, class: "person-name" }, p.n), personUnits(ds, p))),
+              r.people.map((p) =>
+                h(
+                  "li",
+                  null,
+                  h("a", { href: `#/person/${p.i}`, class: "person-name" }, p.n),
+                  personUnits(ds, p),
+                  h("span", { class: "context" }, p.tp.slice(0, 3).map(([tid]) => ds.topics.topics[tid]?.[0]).filter(Boolean).join("; ")),
+                ),
+              ),
             ),
           )
         : null,

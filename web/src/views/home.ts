@@ -47,6 +47,7 @@ export function homeView(ds: Dataset, route: Route): HTMLElement {
     "div",
     { class: "home" },
     hero(ds),
+    browse(ds),
     h(
       "section",
       { class: "page map-section", "aria-labelledby": "map-title" },
@@ -81,6 +82,7 @@ function hero(ds: Dataset): HTMLElement {
       suggest.replaceChildren(suggestions(ds, q, search.suggest(q)));
     }, 120);
   });
+  keyboardNavigation(input, suggest);
   const form = h(
     "form",
     {
@@ -114,6 +116,67 @@ function hero(ds: Dataset): HTMLElement {
       h("a", { href: "#/daten" }, t().heroLimits),
     ),
   );
+}
+
+/** Faculties with their institutes: an entry point for people without a keyword yet. */
+function browse(ds: Dataset): HTMLElement {
+  return h(
+    "section",
+    { class: "page browse", "aria-labelledby": "browse-title" },
+    h("h2", { id: "browse-title" }, t().browseTitle),
+    h("p", { class: "lede" }, t().browseIntro),
+    h(
+      "ul",
+      { class: "faculties" },
+      ds.meta.faculties.map((f) => {
+        const people = ds.persons.filter((p) => p.f.includes(f.id)).length;
+        const works = ds.works.filter((w) => w.f.includes(f.id)).length;
+        const units = ds.meta.units
+          .filter((u) => u.faculty === f.id && !u.parent)
+          .sort((a, b) => loc(a.name).localeCompare(loc(b.name), lang));
+        return h(
+          "li",
+          { class: "faculty" },
+          h("a", { href: `#/einheit/${f.id}`, class: "faculty-name" }, loc(f.name)),
+          h("span", { class: "faculty-facts" }, t().facultyFacts(fmt(people), fmt(works))),
+          h(
+            "ul",
+            null,
+            units.map((u) => h("li", null, h("a", { href: `#/einheit/${u.id}` }, loc(u.name)))),
+          ),
+        );
+      }),
+    ),
+  );
+}
+
+/** Arrow keys move between the search field and the suggestions; Escape closes them. */
+function keyboardNavigation(input: HTMLInputElement, suggest: HTMLElement): void {
+  const links = () => [...suggest.querySelectorAll<HTMLAnchorElement>("a")];
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" && links().length) {
+      e.preventDefault();
+      links()[0]!.focus();
+    } else if (e.key === "Escape") {
+      suggest.replaceChildren();
+    }
+  });
+  suggest.addEventListener("keydown", (e) => {
+    const all = links();
+    const i = all.indexOf(document.activeElement as HTMLAnchorElement);
+    if (i < 0) return;
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      all[Math.min(i + 1, all.length - 1)]!.focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (i === 0) input.focus();
+      else all[i - 1]!.focus();
+    } else if (e.key === "Escape") {
+      suggest.replaceChildren();
+      input.focus();
+    }
+  });
 }
 
 function suggestions(

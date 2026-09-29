@@ -82,7 +82,7 @@ export function qualityView(ds: Dataset): HTMLElement {
       "Fehler melden, Nennung entfernen lassen",
       h("p", null, "Fehler meldest du über ein ", issues("correction.yml", "Formular auf GitHub"), ". Korrekturen landen in der Zuordnungsdatei oder in der Konfiguration und gelten ab der nächsten Aktualisierung. Wir antworten innerhalb von 14 Tagen."),
       h("p", null, "Wer nicht genannt werden möchte, stellt einen ", issues("removal.yml", "Antrag auf Entfernung"), ". Die Person wird ohne Rückfragen und ohne Begründung entfernt, spätestens innerhalb von 14 Tagen: Profil, Name und Werke, auf denen sie die einzige aufgeführte Person der Universität ist. Die Entfernung gilt dauerhaft, auch für künftige Aktualisierungen."),
-      "Über Fehler in OpenAlex selbst (falsche Werke im Profil, falsche Institution) kannst du auch OpenAlex informieren; dann profitieren alle Dienste, die OpenAlex nutzen.",
+      h("p", null, "Fehler in OpenAlex selbst (falsche Werke im Profil, falsche Institution) kannst du auch OpenAlex melden, dann profitieren alle Dienste, die OpenAlex nutzen. Berichtigung oder Löschung personenbezogener Daten bei OpenAlex: ", h("a", { href: "mailto:privacy@openalex.org" }, "privacy@openalex.org"), "."),
     ],
   ];
 
@@ -131,7 +131,7 @@ export function qualityView(ds: Dataset): HTMLElement {
       "Report errors, request removal",
       h("p", null, "Report errors using the ", issues("correction.yml", "form on GitHub"), ". Corrections go into the mapping file or the configuration and apply from the next update. You get an answer within 14 days."),
       h("p", null, "If you do not want to be listed, file a ", issues("removal.yml", "removal request"), ". You will be removed without questions and without giving a reason, within 14 days at the latest: profile, name, and works where you are the only listed person from the university. The removal is permanent, including future updates."),
-      "Errors in OpenAlex itself (wrong works in a profile, wrong institution) can also be reported to OpenAlex, which helps every service built on it.",
+      h("p", null, "Errors in OpenAlex itself (wrong works in a profile, wrong institution) can also be reported to OpenAlex, which helps every service built on it. Correction or removal of personal data at OpenAlex: ", h("a", { href: "mailto:privacy@openalex.org" }, "privacy@openalex.org"), "."),
     ],
   ];
 
