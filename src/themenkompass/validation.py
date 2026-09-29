@@ -140,7 +140,7 @@ def summarise(path: Path, years: tuple[int, int], notes: dict[str, list[str]]) -
         "source": "ORCID",
         "window": list(years),
         "people": len(rows),
-        "replaced": sum(1 for r in rows if (r.get("note") or "").startswith("replaces")),
+        "replaced": sum((r.get("note") or "").count("replaces ") for r in rows),
         "missingReasons": reasons,
         "inScope": in_scope,
         "reference": total("reference_works"),

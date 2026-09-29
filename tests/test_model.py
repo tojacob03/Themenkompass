@@ -53,7 +53,7 @@ def test_build_tables(config: Config, works: list[dict[str, Any]]) -> None:
     t = build(works, config)
     # W11 has no internal author and is dropped
     assert "W11" not in t.works["work_id"].to_list()
-    assert t.works.height == 10
+    assert t.works.height == 12
     w1 = t.works.filter(t.works["work_id"] == "W1").row(0, named=True)
     assert w1["title"] == "Wages on imaginary islands"  # markup stripped
     assert w1["doi"] == "10.0000/w1"
@@ -137,3 +137,12 @@ def test_mapping_validation(tmp_path: Path, config: Config, content: str, messag
     m.write_text(content)
     with pytest.raises(ValueError, match=message):
         load_mapping(m, config)
+
+
+def test_sub_institutions_are_internal(config: Config, works: list[dict[str, Any]]) -> None:
+    t = build(works, config)
+    hanna = person(t, "A108")
+    # affiliated only with I5, a sub-institution of I1 (OpenAlex lineage)
+    assert hanna["units"] == ["bio"]
+    assert "I5" not in set(t.institutions["institution_id"])
+    assert "W13" in set(t.works["work_id"])

@@ -70,7 +70,7 @@ def test_topics_and_meta(payload: dict[str, Any]) -> None:
     assert meta["institution"]["ror"] == "0zzzzzz00"
     assert meta["years"] == [2022, 2026]
     assert {u["id"] for u in meta["units"]} == {"econ", "data", "bio"}
-    assert meta["quality"]["works"] == 10
+    assert meta["quality"]["works"] == 12
 
 
 def test_write_all_and_index(tmp_path: Path, config: Config, works: list[dict[str, Any]]) -> None:

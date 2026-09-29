@@ -50,6 +50,8 @@ max_requests_per_run = 2000
 # papers (English and German variants). Patterns are case-insensitive regular
 # expressions. A unit with a `parent` replaces its parent when both match.
 # Faculty patterns catch strings that name only the faculty ("School of ...").
+# `institutions` lists OpenAlex sub-institutions of the university (lineage) that
+# belong to a unit; an authorship at such an institution counts for that unit.
 # Structure as listed on https://uol.de/fakultaeten (checked 2026-09-29).
 # ---------------------------------------------------------------------------
 
@@ -132,6 +134,7 @@ id = "offis"
 faculty = "fk2"
 name_de = "OFFIS – Institut für Informatik (An-Institut)"
 name_en = "OFFIS – Institute for Information Technology (affiliated)"
+institutions = ["I202367325"]  # OpenAlex sub-institution
 patterns = ["\\bOFFIS\\b"]
 
 [[units]]
@@ -139,7 +142,16 @@ id = "wire"
 faculty = "fk2"
 name_de = "Department für Wirtschafts- und Rechtswissenschaften"
 name_en = "Department of Business Administration, Economics and Law"
-patterns = ["Business Administration,? Economics,? and Law", "Wirtschafts- und Rechtswissenschaften", "Department of (Economics|Business Administration)\\b", "Institut f(ü|ue)r Volkswirtschaftslehre", "Institut f(ü|ue)r Betriebswirtschaftslehre", "Economic Education", "(Ö|Oe)konomische Bildung", "Department of Law\\b", "Faculty of Law\\b", "Ecological Economics", "Finance and Banking", "Innovation Management", "Berufs- und Wirtschaftsp(ä|ae)dagogik", "Business and Economic Education"]
+patterns = ["Business Administration,? Economics,? and Law", "Wirtschafts- und Rechtswissenschaften", "Department of (Economics|Business Administration)\\b", "Institut f(ü|ue)r Volkswirtschaftslehre", "Institut f(ü|ue)r Betriebswirtschaftslehre", "Department of Law\\b", "Faculty of Law\\b", "Ecological Economics", "Finance and Banking", "Innovation Management", "Berufs- und Wirtschaftsp(ä|ae)dagogik", "Business and Economic Education"]
+
+[[units]]
+id = "ioeb"
+faculty = "fk2"
+parent = "wire"
+name_de = "Institut für Ökonomische Bildung"
+name_en = "Institute for Economic Education"
+institutions = ["I4210117116"]  # OpenAlex sub-institution
+patterns = ["(Ö|Oe)konomische Bildung", "Institute (for|of) Economic Education", "(?<!Business and )Economic Education"]
 
 # --- Fakultät III -----------------------------------------------------------
 [[units]]
@@ -226,6 +238,7 @@ id = "icbm"
 faculty = "fk5"
 name_de = "Institut für Chemie und Biologie des Meeres (ICBM)"
 name_en = "Institute for Chemistry and Biology of the Marine Environment (ICBM)"
+institutions = ["I4405252970"]  # OpenAlex sub-institution
 patterns = ["\\bICBM\\b", "Chemistry and Biology of (the )?Marine Environment", "Chemie und Biologie des Meeres"]
 
 [[units]]
@@ -233,6 +246,7 @@ id = "hifmb"
 faculty = "fk5"
 name_de = "Helmholtz-Institut für Funktionelle Marine Biodiversität (HIFMB)"
 name_en = "Helmholtz Institute for Functional Marine Biodiversity (HIFMB)"
+institutions = ["I4210094775"]  # OpenAlex sub-institution
 patterns = ["\\bHIFMB\\b", "Functional Marine Biodiversity"]
 
 [[units]]

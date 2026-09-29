@@ -1,21 +1,21 @@
 author_id,name,unit,faculty,themenkompass_works,reference_url,reference_works,found,missing,extra,wrong,note
 A5015524397,,sowi,fk1,10,https://orcid.org/0000-0001-8895-7445,1,1,0,9,0,
-A5061229129,,wire,fk2,6,https://orcid.org/0009-0006-6624-2602,13,1,12,5,0,"no_affiliation=1, no_doi=2, not_in_openalex=1, other_profile=6, unexplained=2"
-A5092846839,,inf,fk2,9,https://orcid.org/0000-0002-0570-5793,9,8,1,1,0,replaces A5075814554 (no ORCID works); no_affiliation=1
-A5051833095,,musik,fk3,6,https://orcid.org/0000-0002-3710-7966,5,3,2,3,0,"no_affiliation=1, no_doi=1"
-A5054943135,,philosophie,fk4,11,https://orcid.org/0000-0003-0923-6864,12,8,4,3,0,"no_affiliation=2, no_doi=2"
-A5074482349,,physik,fk5,15,https://orcid.org/0000-0002-1167-0531,10,10,0,5,0,replaces A5045507733 (no ORCID works)
-A5090394874,,physik,fk5,16,https://orcid.org/0000-0001-6838-618X,2,2,0,14,0,
-A5042053666,,icbm,fk5,8,https://orcid.org/0000-0002-8038-1741,5,5,0,3,0,
-A5059089729,,physik,fk5,3,https://orcid.org/0000-0003-2614-6190,2,2,0,1,0,
-A5045141026,,icbm,fk5,6,https://orcid.org/0000-0002-7078-9700,5,5,0,1,0,
-A5080415256,,ibu,fk5,12,https://orcid.org/0000-0002-6086-2943,15,8,7,4,0,"replaces A5015136456 (no ORCID works); no_affiliation=2, out_of_scope=4, unexplained=1"
-A5065122708,,physik,fk5,3,https://orcid.org/0000-0003-1640-327X,1,0,1,3,0,no_affiliation=1
-A5021332551,,icbm,fk5,17,https://orcid.org/0000-0002-2725-2617,24,13,11,4,0,replaces A5061477615 (no ORCID works); no_affiliation=11
-A5050320681,,mpa,fk6,6,https://orcid.org/0000-0001-8200-992X,2,2,0,4,0,
-A5028671573,,versorgung,fk6,8,https://orcid.org/0000-0002-4315-1816,2,2,0,6,0,
-A5031157072,,humanmedizin,fk6,10,https://orcid.org/0000-0003-4091-4176,7,7,0,3,0,
-A5054227488,,humanmedizin,fk6,24,https://orcid.org/0000-0002-3131-4104,154,24,130,0,0,"replaces A5073805486 (no ORCID works); no_affiliation=127, no_doi=1, other_profile=2"
-A5034058041,,psych,fk6,18,https://orcid.org/0000-0003-4788-4301,6,5,1,13,0,out_of_scope=1
-A5114348994,,psych,fk6,5,https://orcid.org/0000-0002-8538-5450,4,4,0,1,0,
-A5053931074,,humanmedizin,fk6,7,https://orcid.org/0009-0008-3822-6079,6,6,0,1,0,
+A5083180525,,offis,fk2,4,https://orcid.org/0009-0005-0379-2378,2,2,0,2,0,
+A5078011602,,inf,fk2,7,https://orcid.org/0000-0002-5586-8566,7,6,1,1,0,replaces A5094730569 (no ORCID works); no_affiliation=1
+A5103082677,,offis,fk2,3,https://orcid.org/0009-0005-4643-8264,3,3,0,0,0,replaces A5093320982 (no ORCID works)
+A5063274758,,musik,fk3,33,https://orcid.org/0000-0001-9586-241X,11,8,3,25,0,"replaces A5068322890 (no ORCID works); no_affiliation=2, out_of_scope=1"
+A5087802654,,sport,fk4,3,https://orcid.org/0000-0003-3596-040X,3,3,0,0,0,
+A5035279941,,physik,fk5,24,https://orcid.org/0000-0003-3854-5025,10,8,2,16,0,no_affiliation=2
+A5056258816,,physik,fk5,13,https://orcid.org/0000-0002-5101-191X,11,11,0,2,0,
+A5068196020,,chemie,fk5,3,https://orcid.org/0000-0002-4165-8357,2,2,0,1,0,
+A5055147053,,hifmb,fk5,4,https://orcid.org/0000-0003-2765-8227,3,3,0,1,0,
+A5021781221,,physik,fk5,4,https://orcid.org/0000-0002-8556-2277,4,2,2,2,0,replaces A5008211728 (no ORCID works); no_affiliation=2
+A5051054384,,physik,fk5,4,https://orcid.org/0000-0001-5711-8075,2,1,1,3,0,no_affiliation=1
+A5040721174,,physik,fk5,5,https://orcid.org/0000-0003-1151-8625,6,5,1,0,0,other_profile=1
+A5093569036,,humanmedizin,fk6,5,https://orcid.org/0009-0009-6649-3526,2,2,0,3,0,replaces A5045106152 (no ORCID works)
+A5085799915,,humanmedizin,fk6,14,https://orcid.org/0000-0002-6984-678X,2,2,0,12,0,
+A5064756231,,humanmedizin,fk6,3,https://orcid.org/0000-0001-8183-6894,31,3,28,0,0,"replaces A5042844747 (no ORCID works); no_affiliation=27, other_profile=1"
+A5001251747,,mpa,fk6,7,https://orcid.org/0000-0002-4298-4605,4,4,0,3,0,replaces A5018434363 (no ORCID works); replaces A5076076975 (no ORCID works); replaces A5076849318 (no ORCID works); replaces A5053016558 (no ORCID works)
+A5052886335,,humanmedizin,fk6,34,https://orcid.org/0000-0003-3252-2076,2,2,0,32,0,
+A5088228708,,humanmedizin,fk6,20,https://orcid.org/0000-0002-6003-4662,19,11,8,9,0,no_affiliation=8
+A5004403125,,humanmedizin,fk6,19,https://orcid.org/0000-0002-5877-5496,16,15,1,4,0,replaces A5103021008 (no ORCID works); no_affiliation=1

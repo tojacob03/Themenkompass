@@ -53,4 +53,5 @@ id = "bio"
 faculty = "f2"
 name_de = "Institut für Biologie"
 name_en = "Institute of Biology"
+institutions = ["I5"]
 patterns = ["Institute of Biology"]

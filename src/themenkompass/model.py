@@ -127,18 +127,39 @@ def mentions_institution(raw_affiliation: str, aliases: tuple[str, ...]) -> bool
     return any(alias.casefold() in text for alias in aliases)
 
 
-def institution_strings(authorship: dict[str, Any], config: Config) -> list[str]:
-    """Raw affiliation strings that OpenAlex linked to the configured institution.
+def internal_institutions(authorship: dict[str, Any], config: Config) -> set[str]:
+    """The institution and its sub-institutions (by OpenAlex lineage) on an authorship.
+
+    OpenAlex models some university institutes as institutions of their own below the
+    university (e.g. a marine research institute). They count as internal, not as
+    external partners.
+    """
+    found: set[str] = set()
+    for inst in authorship.get("institutions") or []:
+        iid = short_id(inst.get("id") or "")
+        lineage = {short_id(x) for x in inst.get("lineage") or []}
+        if iid and (iid == config.openalex_id or config.openalex_id in lineage):
+            found.add(iid)
+    return found
+
+
+def institution_strings(
+    authorship: dict[str, Any], config: Config, internal: set[str] | None = None
+) -> list[str]:
+    """Raw affiliation strings that OpenAlex linked to the institution or a sub-institution.
 
     Older records lack the ``affiliations`` list; for those we fall back to raw strings
     that contain one of the configured institution names.
     """
+    if internal is None:
+        internal = internal_institutions(authorship, config)
+    internal = internal | {config.openalex_id}
     affiliations = authorship.get("affiliations")
     if affiliations:
         return [
             a["raw_affiliation_string"]
             for a in affiliations
-            if any(short_id(i) == config.openalex_id for i in a.get("institution_ids", []))
+            if any(short_id(i) in internal for i in a.get("institution_ids", []))
         ]
     return [
         s
@@ -152,8 +173,17 @@ def match_units(raw_affiliation: str, config: Config) -> list[str]:
     hits = [
         unit.id for unit in config.units if any(p.search(raw_affiliation) for p in unit.compiled())
     ]
+    return drop_parents(hits, config)
+
+
+def drop_parents(hits: list[str], config: Config) -> list[str]:
     parents = {config.unit(h).parent for h in hits}
-    return [h for h in hits if h not in parents]
+    return sorted({h for h in hits if h not in parents})
+
+
+def units_from_institutions(institution_ids: set[str], config: Config) -> list[str]:
+    """Units configured for OpenAlex sub-institutions (the strongest evidence there is)."""
+    return [u.id for u in config.units if institution_ids & set(u.institutions)]
 
 
 def match_faculties(raw_affiliation: str, config: Config) -> list[str]:
@@ -191,13 +221,11 @@ def build(
             if not author.get("id"):
                 continue
             author_id = short_id(author["id"])
-            inst_ids = [
-                short_id(i["id"]) for i in authorship.get("institutions", []) if i.get("id")
-            ]
-            is_internal = config.openalex_id in inst_ids
-            for inst in authorship.get("institutions", []):
+            internal = internal_institutions(authorship, config)
+            is_internal = bool(internal)
+            for inst in authorship.get("institutions") or []:
                 iid = short_id(inst.get("id") or "")
-                if iid and iid != config.openalex_id:
+                if iid and iid not in internal:
                     external.add(iid)
                     institution_rows.setdefault(
                         iid,
@@ -211,8 +239,12 @@ def build(
                     )
             if not is_internal or author_id in exclude:
                 continue
-            strings = institution_strings(authorship, config)
-            units = sorted({u for s in strings for u in match_units(s, config)})
+            strings = institution_strings(authorship, config, internal)
+            units = drop_parents(
+                [u for s in strings for u in match_units(s, config)]
+                + units_from_institutions(internal, config),
+                config,
+            )
             faculties = sorted(
                 {f for s in strings for f in match_faculties(s, config)}
                 | {unit_faculty[u] for u in units}
@@ -227,7 +259,7 @@ def build(
                     "position": position,
                     "units": units,
                     "faculties": faculties,
-                    "has_affiliation_text": bool(strings),
+                    "has_affiliation_text": bool(strings) or internal != {config.openalex_id},
                 }
             )
 

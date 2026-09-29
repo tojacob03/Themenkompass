@@ -51,6 +51,8 @@ class Unit:
     name_en: str
     patterns: tuple[str, ...]
     parent: str | None = None
+    # OpenAlex ids of sub-institutions that belong to this unit (see lineage)
+    institutions: tuple[str, ...] = ()
 
     def compiled(self) -> list[re.Pattern[str]]:
         return [re.compile(p, re.IGNORECASE) for p in self.patterns]
@@ -196,7 +198,11 @@ def parse_config(raw: dict[str, object], source_path: Path | None = None) -> Con
             name_en=_require(u, "name_en", "[[units]]"),
             patterns=tuple(_strings(u, "patterns")),
             parent=str(u["parent"]) if u.get("parent") else None,
+            institutions=tuple(_strings(u, "institutions")),
         )
+        for iid in unit.institutions:
+            if not OPENALEX_INSTITUTION_RE.match(iid):
+                raise ConfigError(f"unit '{unit.id}': '{iid}' is not an OpenAlex institution id")
         if unit.faculty not in faculty_ids:
             raise ConfigError(f"unit '{unit.id}' refers to unknown faculty '{unit.faculty}'")
         if not unit.patterns:

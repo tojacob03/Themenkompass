@@ -48,13 +48,17 @@ PEOPLE = {
     "A107": "Greta Austritt",
     "A900": "Xaver Extern",
     "A901": "Yara Auswärts",
+    "A108": "Hanna Tochter",
 }
 
 INSTITUTIONS = {
     "I1": ("Musteruniversität", "DE", "education", "0zzzzzz00"),
     "I2": ("Beispiel-Hochschule", "DE", "education", "0yyyyyy00"),
     "I3": ("Fantasia Research Institute", "NL", "facility", None),
+    # an institute that OpenAlex models as a sub-institution of I1
+    "I5": ("Musterinstitut für Meeresbiologie", "DE", "facility", None),
 }
+LINEAGE = {"I5": ["I5", "I1"]}
 
 AFF = {
     "econ": "Department of Economics, Musteruniversität, Musterstadt",
@@ -64,6 +68,7 @@ AFF = {
     "bare": "Example University",
     "ext2": "Beispiel-Hochschule, Anderswo",
     "ext3": "Fantasia Research Institute, Nirgendwo",
+    "child": "Musterinstitut für Meeresbiologie, Musterstadt",
 }
 
 
@@ -85,6 +90,7 @@ def authorship(author: str, inst: str, aff: str) -> dict[str, Any]:
                 "ror": f"https://ror.org/{ror}" if ror else None,
                 "country_code": cc,
                 "type": kind,
+                "lineage": [OA + i for i in LINEAGE.get(inst, [inst])],
             }
         ],
         "raw_affiliation_strings": [AFF[aff]],
@@ -207,6 +213,20 @@ WORKS = [
         [("T1", 0.6)],
     ),
     work("W11", "Undated fragment", 2021, [("A900", "I2", "ext2")], [("T2", 0.5)]),
+    work(
+        "W12",
+        "Sea snails, imagined",
+        2025,
+        [("A108", "I5", "child"), ("A103", "I1", "bio")],
+        [("T3", 0.9)],
+    ),
+    work(
+        "W13",
+        "More imagined sea snails",
+        2026,
+        [("A108", "I5", "child"), ("A900", "I2", "ext2")],
+        [("T3", 0.9)],
+    ),
 ]
 
 if __name__ == "__main__":

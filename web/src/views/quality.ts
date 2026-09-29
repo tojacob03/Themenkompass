@@ -177,8 +177,8 @@ function validationBlock(v: Validation | null): HTMLElement {
       "p",
       null,
       de
-        ? `Stand ${v.checkedAt}, Werke der Jahre ${v.window[0]} bis ${v.window[1]}. In den ORCID-Profilen der ${v.people} Personen stehen ${v.reference} Werke; ${v.found} davon (${pct(v.found, v.reference)}) zeigt auch der Themenkompass. Zählt man nur Werke, die in den Rahmen der Seite fallen, sind es ${v.found} von ${v.inScope} (${pct(v.found, v.inScope)}). ${v.replaced} der zuerst gezogenen Personen hatten keine ORCID-Werke im Zeitraum und wurden durch die nächste Person derselben Fakultät ersetzt.`
-        : `As of ${v.checkedAt}, works from ${v.window[0]} to ${v.window[1]}. The ${v.people} people's ORCID records list ${v.reference} works; Themenkompass shows ${v.found} of them (${pct(v.found, v.reference)}). Counting only works within the site's scope, it is ${v.found} of ${v.inScope} (${pct(v.found, v.inScope)}). ${v.replaced} of the people drawn first had no ORCID works in the period and were replaced by the next person from the same faculty.`,
+        ? `Stand ${v.checkedAt}, Werke der Jahre ${v.window[0]} bis ${v.window[1]}. In den ORCID-Profilen der ${v.people} Personen stehen ${v.reference} Werke; ${v.found} davon (${pct(v.found, v.reference)}) zeigt auch der Themenkompass. Zählt man nur Werke, die in den Rahmen der Seite fallen, sind es ${v.found} von ${v.inScope} (${pct(v.found, v.inScope)}). ${v.replaced}-mal hatte eine gezogene Person keine ORCID-Werke im Zeitraum und wurde durch die nächste Person derselben Fakultät ersetzt.`
+        : `As of ${v.checkedAt}, works from ${v.window[0]} to ${v.window[1]}. The ${v.people} people's ORCID records list ${v.reference} works; Themenkompass shows ${v.found} of them (${pct(v.found, v.reference)}). Counting only works within the site's scope, it is ${v.found} of ${v.inScope} (${pct(v.found, v.inScope)}). ${v.replaced} times a drawn person had no ORCID works in the period and was replaced by the next person from the same faculty.`,
     ),
     h(
       "table",

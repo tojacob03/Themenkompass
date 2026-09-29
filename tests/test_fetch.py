@@ -11,7 +11,7 @@ FREE = {"x-ratelimit-cost-usd": "0.0001", "x-ratelimit-remaining-usd": "0.9"}
 
 def test_works_filter(config: Config) -> None:
     f = works_filter(config, (2022, 2026))
-    assert "institutions.id:I1" in f
+    assert "authorships.institutions.lineage:I1" in f
     assert "publication_year:2022-2026" in f
     assert "is_retracted:false" in f
     assert "type:article|" in f

@@ -199,7 +199,12 @@ def cmd_check_orcid(config: Config, args: argparse.Namespace) -> int:
                 log.info("%s: no ORCID works in window -> replaced", row["author_id"])
                 if replacement:
                     reserves.remove(replacement)
-                    replacement["note"] = f"replaces {row['author_id']} (no ORCID works)"
+                    # keep the whole chain so every replacement is counted
+                    replacement["note"] = "; ".join(
+                        filter(
+                            None, [row.get("note"), f"replaces {row['author_id']} (no ORCID works)"]
+                        )
+                    )
                     queue.insert(0, replacement)
                 continue
             ours = [

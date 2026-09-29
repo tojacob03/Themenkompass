@@ -6,34 +6,34 @@
   2025
  ],
  "people": 20,
- "replaced": 5,
+ "replaced": 11,
  "missingReasons": {
-  "no_doi": 6,
-  "not_in_openalex": 1,
-  "other_profile": 8,
-  "no_affiliation": 146,
-  "out_of_scope": 5,
-  "unexplained": 3
+  "no_doi": 0,
+  "not_in_openalex": 0,
+  "other_profile": 2,
+  "no_affiliation": 44,
+  "out_of_scope": 1,
+  "unexplained": 0
  },
- "inScope": 134,
- "reference": 285,
- "found": 116,
- "missing": 169,
- "extra": 84,
+ "inScope": 96,
+ "reference": 141,
+ "found": 94,
+ "missing": 47,
+ "extra": 125,
  "wrong": 0,
  "notes": {
   "de": [
    "Vergleichsquelle ist das ORCID-Profil der Person, also ihre selbst gepflegte Publikationsliste. Die Publikationslisten auf den Uni-Seiten ließen sich nicht einheitlich auswerten; eine lud gar nicht.",
    "Die meisten fehlenden Werke nennen die Universität nicht: Sie sind an anderen Einrichtungen entstanden oder OpenAlex hat die Zugehörigkeit nicht erkannt. Das betrifft vor allem eine Person aus der Klinik mit sehr vielen Werken.",
    "Von den Werken, die in den Rahmen des Themenkompasses fallen (Universität genannt oder nicht prüfbar), fehlen einige, weil OpenAlex sie einem zweiten Profil derselben Person zugeordnet hat oder sie keine DOI haben.",
-   "Werke im Themenkompass, die nicht im ORCID-Profil stehen, wurden nach Titel und Fach geprüft. Keines gehörte erkennbar zu einer anderen Person; sechs waren Doppelungen (Preprint und Zeitschriftenfassung oder deutsche und englische Fassung).",
+   "Werke im Themenkompass, die nicht im ORCID-Profil stehen, wurden nach Titel und Fach geprüft. Keines gehörte erkennbar zu einer anderen Person; mindestens sechs waren Doppelungen (Preprint und Zeitschriftenfassung oder deutsche und englische Fassung). Viele Personen pflegen ihr ORCID-Profil nur unvollständig.",
    "Grenze der Prüfung: ORCID-Profile werden oft automatisch aus Crossref befüllt, derselben Quelle, die auch OpenAlex nutzt. Lücken bei Werken ohne DOI, etwa deutschsprachigen Buchkapiteln, werden so eher unterschätzt."
   ],
   "en": [
    "The reference is each person's ORCID record, i.e. their self-maintained publication list. The publication lists on the university's pages could not be evaluated consistently; one did not load at all.",
    "Most missing works do not name the university: they were written elsewhere, or OpenAlex did not recognise the affiliation. Much of this comes from one clinician with a very large number of works.",
    "Of the works within the site's scope (university named, or not checkable), some are missing because OpenAlex put them on a second profile of the same person or because they have no DOI.",
-   "Works in Themenkompass that are not on the ORCID record were checked by title and field. None clearly belonged to someone else; six were duplicates (preprint and journal version, or German and English version).",
+   "Works in Themenkompass that are not on the ORCID record were checked by title and field. None clearly belonged to someone else; at least six were duplicates (preprint and journal version, or German and English version). Many people keep their ORCID record only partly up to date.",
    "Limit of this check: ORCID records are often filled automatically from Crossref, the same source OpenAlex uses. Gaps for works without a DOI, such as German-language book chapters, are therefore likely underestimated."
   ]
  }

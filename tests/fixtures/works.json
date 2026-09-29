@@ -26,7 +26,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -54,7 +57,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -151,7 +157,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -179,7 +188,10 @@
       "display_name": "Beispiel-Hochschule",
       "ror": "https://ror.org/0yyyyyy00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I2"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -259,7 +271,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -287,7 +302,10 @@
       "display_name": "Beispiel-Hochschule",
       "ror": "https://ror.org/0yyyyyy00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I2"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -315,7 +333,10 @@
       "display_name": "Fantasia Research Institute",
       "ror": null,
       "country_code": "NL",
-      "type": "facility"
+      "type": "facility",
+      "lineage": [
+       "https://openalex.org/I3"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -395,7 +416,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -423,7 +447,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -520,7 +547,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -548,7 +578,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -628,7 +661,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -656,7 +692,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -684,7 +723,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -764,7 +806,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -792,7 +837,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -872,7 +920,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -900,7 +951,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -980,7 +1034,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1008,7 +1065,10 @@
       "display_name": "Fantasia Research Institute",
       "ror": null,
       "country_code": "NL",
-      "type": "facility"
+      "type": "facility",
+      "lineage": [
+       "https://openalex.org/I3"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1088,7 +1148,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1116,7 +1179,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1144,7 +1210,10 @@
       "display_name": "Beispiel-Hochschule",
       "ror": "https://ror.org/0yyyyyy00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I2"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1172,7 +1241,10 @@
       "display_name": "Fantasia Research Institute",
       "ror": null,
       "country_code": "NL",
-      "type": "facility"
+      "type": "facility",
+      "lineage": [
+       "https://openalex.org/I3"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1200,7 +1272,10 @@
       "display_name": "Musteruniversität",
       "ror": "https://ror.org/0zzzzzz00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1280,7 +1355,10 @@
       "display_name": "Beispiel-Hochschule",
       "ror": "https://ror.org/0yyyyyy00",
       "country_code": "DE",
-      "type": "education"
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I2"
+      ]
      }
     ],
     "raw_affiliation_strings": [
@@ -1329,6 +1407,236 @@
     "domain": {
      "id": "https://openalex.org/domains/2",
      "display_name": "Social Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W12",
+  "doi": "https://doi.org/10.0000/w12",
+  "display_name": "Sea snails, imagined",
+  "publication_year": 2025,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A108",
+     "display_name": "Hanna Tochter",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I5",
+      "display_name": "Musterinstitut für Meeresbiologie",
+      "ror": null,
+      "country_code": "DE",
+      "type": "facility",
+      "lineage": [
+       "https://openalex.org/I5",
+       "https://openalex.org/I1"
+      ]
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Musterinstitut für Meeresbiologie, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Musterinstitut für Meeresbiologie, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I5"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A103",
+     "display_name": "Clara Fiktiv",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I1",
+      "display_name": "Musteruniversität",
+      "ror": "https://ror.org/0zzzzzz00",
+      "country_code": "DE",
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Institute of Biology, Example University, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Institute of Biology, Example University, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I1"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T3",
+   "display_name": "Coastal Plankton Ecology",
+   "score": 0.9,
+   "subfield": {
+    "id": "https://openalex.org/subfields/1105",
+    "display_name": "Ecology, Evolution, Behavior and Systematics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/11",
+    "display_name": "Agricultural and Biological Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/1",
+    "display_name": "Life Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T3",
+    "display_name": "Coastal Plankton Ecology",
+    "score": 0.9,
+    "subfield": {
+     "id": "https://openalex.org/subfields/1105",
+     "display_name": "Ecology, Evolution, Behavior and Systematics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/11",
+     "display_name": "Agricultural and Biological Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/1",
+     "display_name": "Life Sciences"
+    }
+   }
+  ]
+ },
+ {
+  "id": "https://openalex.org/W13",
+  "doi": "https://doi.org/10.0000/w13",
+  "display_name": "More imagined sea snails",
+  "publication_year": 2026,
+  "type": "article",
+  "language": "en",
+  "primary_location": {
+   "source": {
+    "id": "https://openalex.org/S1",
+    "display_name": "Journal of Invented Results"
+   }
+  },
+  "authorships": [
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A108",
+     "display_name": "Hanna Tochter",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I5",
+      "display_name": "Musterinstitut für Meeresbiologie",
+      "ror": null,
+      "country_code": "DE",
+      "type": "facility",
+      "lineage": [
+       "https://openalex.org/I5",
+       "https://openalex.org/I1"
+      ]
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Musterinstitut für Meeresbiologie, Musterstadt"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Musterinstitut für Meeresbiologie, Musterstadt",
+      "institution_ids": [
+       "https://openalex.org/I5"
+      ]
+     }
+    ]
+   },
+   {
+    "author_position": "middle",
+    "author": {
+     "id": "https://openalex.org/A900",
+     "display_name": "Xaver Extern",
+     "orcid": null
+    },
+    "institutions": [
+     {
+      "id": "https://openalex.org/I2",
+      "display_name": "Beispiel-Hochschule",
+      "ror": "https://ror.org/0yyyyyy00",
+      "country_code": "DE",
+      "type": "education",
+      "lineage": [
+       "https://openalex.org/I2"
+      ]
+     }
+    ],
+    "raw_affiliation_strings": [
+     "Beispiel-Hochschule, Anderswo"
+    ],
+    "affiliations": [
+     {
+      "raw_affiliation_string": "Beispiel-Hochschule, Anderswo",
+      "institution_ids": [
+       "https://openalex.org/I2"
+      ]
+     }
+    ]
+   }
+  ],
+  "primary_topic": {
+   "id": "https://openalex.org/T3",
+   "display_name": "Coastal Plankton Ecology",
+   "score": 0.9,
+   "subfield": {
+    "id": "https://openalex.org/subfields/1105",
+    "display_name": "Ecology, Evolution, Behavior and Systematics"
+   },
+   "field": {
+    "id": "https://openalex.org/fields/11",
+    "display_name": "Agricultural and Biological Sciences"
+   },
+   "domain": {
+    "id": "https://openalex.org/domains/1",
+    "display_name": "Life Sciences"
+   }
+  },
+  "topics": [
+   {
+    "id": "https://openalex.org/T3",
+    "display_name": "Coastal Plankton Ecology",
+    "score": 0.9,
+    "subfield": {
+     "id": "https://openalex.org/subfields/1105",
+     "display_name": "Ecology, Evolution, Behavior and Systematics"
+    },
+    "field": {
+     "id": "https://openalex.org/fields/11",
+     "display_name": "Agricultural and Biological Sciences"
+    },
+    "domain": {
+     "id": "https://openalex.org/domains/1",
+     "display_name": "Life Sciences"
     }
    }
   ]

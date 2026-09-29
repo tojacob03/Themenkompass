@@ -28,7 +28,8 @@ WORK_FIELDS = (
 def works_filter(config: Config, years: tuple[int, int]) -> str:
     return ",".join(
         [
-            f"institutions.id:{config.openalex_id}",
+            # lineage also finds works of sub-institutions that OpenAlex models separately
+            f"authorships.institutions.lineage:{config.openalex_id}",
             f"publication_year:{years[0]}-{years[1]}",
             "type:" + "|".join(config.scope.work_types),
             "is_retracted:false",
