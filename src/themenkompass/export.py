@@ -206,14 +206,23 @@ def site_payload(tables: Tables, config: Config, run: RunInfo, current_year: int
     trend_by_topic = {r["topic_id"]: r["trend"] for r in trends.iter_rows(named=True)}
     topics = tables.topics
     topics_json = {
-        "domains": {r[0]: r[1] for r in topics.select("domain_id", "domain").unique().iter_rows()},
+        "domains": {
+            r[0]: r[1]
+            for r in topics.select("domain_id", "domain").unique().sort("domain_id").iter_rows()
+        },
         "fields": {
             r[0]: [r[1], r[2]]
-            for r in topics.select("field_id", "field", "domain_id").unique().iter_rows()
+            for r in topics.select("field_id", "field", "domain_id")
+            .unique()
+            .sort("field_id")
+            .iter_rows()
         },
         "subfields": {
             r[0]: [r[1], r[2]]
-            for r in topics.select("subfield_id", "subfield", "field_id").unique().iter_rows()
+            for r in topics.select("subfield_id", "subfield", "field_id")
+            .unique()
+            .sort("subfield_id")
+            .iter_rows()
         },
         "topics": {
             r["topic_id"]: [r["name"], r["subfield_id"], trend_by_topic.get(r["topic_id"], "few")]

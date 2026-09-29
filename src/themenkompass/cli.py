@@ -10,6 +10,7 @@ import logging
 import sys
 from collections import Counter
 from pathlib import Path
+from typing import Any
 
 from themenkompass.config import Config, load_config
 from themenkompass.export import RunInfo, quality_stats, update_index, write_all
@@ -25,6 +26,16 @@ from themenkompass.model import (
     match_units,
 )
 from themenkompass.openalex import BudgetExceededError, DiskCache, OpenAlexClient
+from themenkompass.validation import (
+    classify_missing,
+    compare,
+    draw_sample,
+    orcid_works,
+    summarise,
+    worksheet,
+    write_sample,
+    write_summary,
+)
 
 log = logging.getLogger("themenkompass")
 
@@ -128,6 +139,124 @@ def cmd_run(config: Config, args: argparse.Namespace) -> int:
     return cmd_fetch(config, args) or cmd_build(config, args)
 
 
+VALIDATION_YEARS = (2023, 2025)  # three complete years
+
+
+def _tables_from_snapshot(config: Config) -> Any:
+    snapshot = load_snapshot(snapshot_path(config))
+    exclude = load_exclusions(config.exclude_path)
+    mapping = load_mapping(config.mapping_path, config)
+    return build(snapshot["works"], config, mapping=mapping, exclude=exclude)
+
+
+def cmd_sample(config: Config, args: argparse.Namespace) -> int:
+    tables = _tables_from_snapshot(config)
+    rows, reserves = draw_sample(tables, config, VALIDATION_YEARS, n=args.n, seed=args.seed)
+    path = Path("validation") / f"{config.slug}-sample.csv"
+    if path.exists() and not args.force:
+        log.error("%s exists; use --force to draw a new sample", path)
+        return 1
+    write_sample(path, rows)
+    write_sample(path.with_name(f"{config.slug}-reserves.csv"), reserves)
+    sheet = worksheet(tables, [r["author_id"] for r in rows + reserves], VALIDATION_YEARS)
+    sheet_path = CACHE_DIR / config.slug / "validation-worksheet.json"
+    sheet_path.write_text(json.dumps(sheet, ensure_ascii=False, indent=1), encoding="utf-8")
+    log.info("wrote %s (%d people) and %s", path, len(rows), sheet_path)
+    return 0
+
+
+def cmd_check_orcid(config: Config, args: argparse.Namespace) -> int:
+    """Fill the sample CSV from ORCID records; replace people without a usable record."""
+    import csv
+
+    import httpx
+
+    tables = _tables_from_snapshot(config)
+    persons = {p["author_id"]: p for p in tables.persons.to_dicts()}
+    joined = tables.authorships.join(tables.works, on="work_id")
+    sample_path = Path("validation") / f"{config.slug}-sample.csv"
+    with sample_path.open(encoding="utf-8") as fh:
+        sample = list(csv.DictReader(fh))
+    with sample_path.with_name(f"{config.slug}-reserves.csv").open(encoding="utf-8") as fh:
+        reserves = list(csv.DictReader(fh))
+    details: dict[str, Any] = {}
+    result: list[dict[str, Any]] = []
+    reasons_total: Counter[str] = Counter()
+    cache = DiskCache(CACHE_DIR / "openalex", ttl_seconds=30 * 24 * 3600)
+    openalex = OpenAlexClient(config.budget, cache=cache)
+
+    def lookup(doi: str) -> dict[str, Any]:
+        return openalex.get(f"works/doi:{doi}", {"select": "id,publication_year,type,authorships"})
+
+    with httpx.Client(timeout=30, headers={"User-Agent": "themenkompass-validation"}) as http:
+        queue = list(sample)
+        while queue:
+            row = queue.pop(0)
+            orcid = persons.get(row["author_id"], {}).get("orcid")
+            reference = orcid_works(http, orcid, VALIDATION_YEARS) if orcid else []
+            if not reference:
+                replacement = next((r for r in reserves if r["faculty"] == row["faculty"]), None)
+                log.info("%s: no ORCID works in window -> replaced", row["author_id"])
+                if replacement:
+                    reserves.remove(replacement)
+                    replacement["note"] = f"replaces {row['author_id']} (no ORCID works)"
+                    queue.insert(0, replacement)
+                continue
+            ours = [
+                {"year": r["year"], "title": r["title"], "doi": r["doi"]}
+                for r in joined.filter(joined["author_id"] == row["author_id"]).iter_rows(
+                    named=True
+                )
+                if VALIDATION_YEARS[0] <= r["year"] <= VALIDATION_YEARS[1]
+            ]
+            found, missing, extra = compare(reference, ours)
+            reasons = Counter(
+                classify_missing(lookup, m, row["author_id"], config, VALIDATION_YEARS)
+                for m in missing
+            )
+            reasons_total.update(reasons)
+            row["note"] = "; ".join(
+                filter(
+                    None,
+                    [
+                        row.get("note", ""),
+                        ", ".join(f"{k}={v}" for k, v in sorted(reasons.items())),
+                    ],
+                )
+            )
+            row.update(
+                reference_url=f"https://orcid.org/{orcid}",
+                reference_works=len(reference),
+                found=len(found),
+                missing=len(missing),
+                extra=len(extra),
+                themenkompass_works=len(ours),
+            )
+            row.setdefault("wrong", "")
+            row["name"] = ""  # the published sample lists ids only
+            details[row["author_id"]] = {"missing": missing, "extra": extra}
+            result.append(row)
+    openalex.close()
+    write_sample(sample_path, result)
+    log.info("missing works by reason: %s (%s)", dict(reasons_total), openalex.spend.summary())
+    out = CACHE_DIR / config.slug / "validation-details.json"
+    out.write_text(json.dumps(details, ensure_ascii=False, indent=1), encoding="utf-8")
+    log.info("wrote %s and %s", sample_path, out)
+    return 0
+
+
+def cmd_validation(config: Config, args: argparse.Namespace) -> int:
+    notes_path = Path("validation") / f"{config.slug}-notes.json"
+    notes = (
+        json.loads(notes_path.read_text("utf-8")) if notes_path.exists() else {"de": [], "en": []}
+    )
+    summary = summarise(Path("validation") / f"{config.slug}-sample.csv", VALIDATION_YEARS, notes)
+    out = args.site_dir / config.slug / "validation.json"
+    write_summary(out, summary)
+    log.info("wrote %s: %s", out, {k: v for k, v in summary.items() if k != "notes"})
+    return 0
+
+
 def cmd_affiliations(config: Config, args: argparse.Namespace) -> int:
     """List frequent raw affiliation strings - the starting point for a new unit config."""
     snapshot = load_snapshot(snapshot_path(config))
@@ -160,6 +289,14 @@ def main(argv: list[str] | None = None) -> int:
         p.add_argument("--site-dir", type=Path, default=Path("web/public/data"))
         p.add_argument("--offline", action="store_true", help="skip resolving merged ids")
 
+    p_sample = sub.add_parser("sample", help="draw the validation sample")
+    p_sample.add_argument("-n", type=int, default=20)
+    p_sample.add_argument("--seed", type=int, default=2026)
+    p_sample.add_argument("--force", action="store_true")
+    sub.add_parser("check-orcid", help="compare the sample with the people's ORCID records")
+    p_val = sub.add_parser("validation", help="summarise the evaluated validation sample")
+    p_val.add_argument("--site-dir", type=Path, default=Path("web/public/data"))
+
     p_aff = sub.add_parser("affiliations", help="show frequent raw affiliation strings")
     p_aff.add_argument("--limit", type=int, default=80)
     p_aff.add_argument("--unmatched", action="store_true", help="only strings no unit matches")
@@ -176,6 +313,9 @@ def main(argv: list[str] | None = None) -> int:
         "build": cmd_build,
         "run": cmd_run,
         "affiliations": cmd_affiliations,
+        "sample": cmd_sample,
+        "validation": cmd_validation,
+        "check-orcid": cmd_check_orcid,
     }
     return commands[args.command](config, args)
 

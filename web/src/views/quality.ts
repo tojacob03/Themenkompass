@@ -7,11 +7,16 @@ import { fmt } from "../ui";
 
 interface Validation {
   checkedAt: string;
+  window: [number, number];
   people: number;
+  replaced: number;
   reference: number;
+  inScope: number;
   found: number;
   missing: number;
+  extra: number;
   wrong: number;
+  missingReasons: Record<string, number>;
   notes: { de: string[]; en: string[] };
 }
 
@@ -70,7 +75,7 @@ export function qualityView(ds: Dataset): HTMLElement {
     ],
     [
       "Stichprobe gegen eigene Publikationslisten",
-      "Für eine Stichprobe von 20 zufällig ausgewählten Personen wurden die Werke im Themenkompass mit der Publikationsliste auf ihrer eigenen Seite verglichen.",
+      "Für eine zufällige, nach Fakultäten geschichtete Stichprobe von 20 Personen wurden die Werke im Themenkompass mit ihrer eigenen Publikationsliste im ORCID-Profil verglichen, über DOI und Titel. Für jedes fehlende Werk wurde bei OpenAlex nachgesehen, warum es fehlt.",
       validation,
     ],
     [
@@ -119,7 +124,7 @@ export function qualityView(ds: Dataset): HTMLElement {
     ],
     [
       "Sample check against people's own publication lists",
-      "For a sample of 20 randomly chosen people, the works in Themenkompass were compared with the publication list on their own page.",
+      "For a random sample of 20 people, stratified by faculty, the works in Themenkompass were compared with their own publication list on ORCID, by DOI and title. For every missing work, OpenAlex was checked for the reason.",
       validation,
     ],
     [
@@ -142,19 +147,51 @@ export function qualityView(ds: Dataset): HTMLElement {
 }
 
 function validationBlock(v: Validation | null): HTMLElement {
+  const de = lang === "de";
   if (!v) {
-    return h("p", { class: "note" }, lang === "de" ? "Die Stichprobe ist noch nicht ausgewertet." : "The sample has not been evaluated yet.");
+    return h("p", { class: "note" }, de ? "Die Stichprobe ist noch nicht ausgewertet." : "The sample has not been evaluated yet.");
   }
-  const pct = (n: number) => `${Math.round((100 * n) / Math.max(1, v.reference))} %`;
+  const pct = (n: number, d: number) => `${Math.round((100 * n) / Math.max(1, d))} %`;
+  const r = v.missingReasons;
+  const reasonRows: [string, number][] = de
+    ? [
+        ["Person steht drauf, aber die Universität ist nicht genannt oder nicht erkannt", r.no_affiliation ?? 0],
+        ["bei OpenAlex unter einem zweiten Profil derselben Person", r.other_profile ?? 0],
+        ["ohne DOI, nicht automatisch prüfbar", r.no_doi ?? 0],
+        ["Werkart oder Jahr außerhalb dessen, was die Seite zeigt", r.out_of_scope ?? 0],
+        ["bei OpenAlex nicht vorhanden", r.not_in_openalex ?? 0],
+        ["ungeklärt", r.unexplained ?? 0],
+      ]
+    : [
+        ["person is listed, but the university is not named or not recognised", r.no_affiliation ?? 0],
+        ["on a second OpenAlex profile of the same person", r.other_profile ?? 0],
+        ["no DOI, cannot be checked automatically", r.no_doi ?? 0],
+        ["work type or year outside what the site shows", r.out_of_scope ?? 0],
+        ["not in OpenAlex", r.not_in_openalex ?? 0],
+        ["unexplained", r.unexplained ?? 0],
+      ];
   return h(
     "div",
     null,
     h(
       "p",
       null,
-      lang === "de"
-        ? `Stand ${v.checkedAt}: ${v.people} Personen, ${v.reference} Werke in den eigenen Listen im Zeitraum. Davon im Themenkompass gefunden: ${v.found} (${pct(v.found)}), fehlend: ${v.missing} (${pct(v.missing)}). Werke im Themenkompass, die nicht zur Person gehören: ${v.wrong}.`
-        : `As of ${v.checkedAt}: ${v.people} people, ${v.reference} works in their own lists within the period. Found in Themenkompass: ${v.found} (${pct(v.found)}), missing: ${v.missing} (${pct(v.missing)}). Works in Themenkompass that do not belong to the person: ${v.wrong}.`,
+      de
+        ? `Stand ${v.checkedAt}, Werke der Jahre ${v.window[0]} bis ${v.window[1]}. In den ORCID-Profilen der ${v.people} Personen stehen ${v.reference} Werke; ${v.found} davon (${pct(v.found, v.reference)}) zeigt auch der Themenkompass. Zählt man nur Werke, die in den Rahmen der Seite fallen, sind es ${v.found} von ${v.inScope} (${pct(v.found, v.inScope)}). ${v.replaced} der zuerst gezogenen Personen hatten keine ORCID-Werke im Zeitraum und wurden durch die nächste Person derselben Fakultät ersetzt.`
+        : `As of ${v.checkedAt}, works from ${v.window[0]} to ${v.window[1]}. The ${v.people} people's ORCID records list ${v.reference} works; Themenkompass shows ${v.found} of them (${pct(v.found, v.reference)}). Counting only works within the site's scope, it is ${v.found} of ${v.inScope} (${pct(v.found, v.inScope)}). ${v.replaced} of the people drawn first had no ORCID works in the period and were replaced by the next person from the same faculty.`,
+    ),
+    h(
+      "table",
+      null,
+      h("caption", { class: "note" }, de ? `Warum ${v.missing} Werke fehlen` : `Why ${v.missing} works are missing`),
+      h("tbody", null, reasonRows.map(([label, n]) => h("tr", null, h("td", null, label), h("td", null, String(n))))),
+    ),
+    h(
+      "p",
+      null,
+      de
+        ? `Umgekehrt zeigt der Themenkompass ${v.extra} Werke, die nicht im ORCID-Profil stehen. Erkennbar falsch zugeordnet waren davon ${v.wrong}.`
+        : `Conversely, Themenkompass shows ${v.extra} works that are not on the ORCID record. Clearly misattributed among them: ${v.wrong}.`,
     ),
     h("ul", null, v.notes[lang].map((n) => h("li", null, n))),
   );
