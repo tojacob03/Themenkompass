@@ -1,16 +1,16 @@
 {
- "retrieved_at": "2026-09-29T01:58:25+00:00",
+ "retrieved_at": "2026-10-03T09:54:24+00:00",
  "years": [
   2017,
   2026
  ],
  "openalex": {
-  "requests": 187,
+  "requests": 191,
   "cached": 0,
-  "usd": 0.0187,
+  "usd": 0.0191,
   "keyed": true
  },
- "works": 18278,
- "persons": 3600,
+ "works": 18506,
+ "persons": 3524,
  "share_with_unit": 0.728
 }
